@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -55,6 +56,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+                FilamentNordThemePlugin::make(),
             ]);
     }
 }
