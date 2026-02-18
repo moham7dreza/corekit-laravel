@@ -19,6 +19,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 
 class AdminPanelProvider extends PanelProvider
@@ -61,6 +62,9 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 FilamentNordThemePlugin::make(),
                 FilamentBackgroundsPlugin::make(),
+                EnvironmentIndicatorPlugin::make()
+                    ->showGitBranch()
+                    ->showDebugModeWarning(),
             ]);
     }
 }
