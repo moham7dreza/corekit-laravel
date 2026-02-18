@@ -91,3 +91,7 @@ clear:
 	php artisan route:clear
 	php artisan view:clear
 
+rector:
+	vendor/bin/rector process
+rector-test:
+	vendor/bin/rector process --dry-run
