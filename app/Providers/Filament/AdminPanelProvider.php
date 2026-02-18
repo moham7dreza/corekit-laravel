@@ -20,6 +20,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
+use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 
@@ -67,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
                     ->showGitBranch()
                     ->showDebugModeWarning(),
                 FilamentSpatieLaravelHealthPlugin::make(),
+                FilamentSpatieLaravelBackupPlugin::make(),
             ]);
     }
 }

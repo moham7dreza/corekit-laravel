@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.9",
         "pxlrbt/filament-environment-indicator": "^3.4",
+        "shuvroroy/filament-spatie-laravel-backup": "^3.3",
         "shuvroroy/filament-spatie-laravel-health": "^3.2",
         "swisnl/filament-backgrounds": "^2.0"
     },
