@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use AlizHarb\ActivityLog\ActivityLogPlugin;
 use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
 use Filament\Http\Middleware\Authenticate;
@@ -76,6 +77,10 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationBadge()
                     ->navigationGroup('System')
                     ->modelPruneInterval(now()->subDays(7)),
+                ActivityLogPlugin::make()
+                    ->label('Log')
+                    ->pluralLabel('Logs')
+                    ->navigationGroup('System'),
             ]);
     }
 }
