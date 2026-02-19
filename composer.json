@@ -20,6 +20,7 @@
         "pxlrbt/filament-environment-indicator": "^3.4",
         "shuvroroy/filament-spatie-laravel-backup": "^3.3",
         "shuvroroy/filament-spatie-laravel-health": "^3.2",
+        "spatie/laravel-permission": "^7.2",
         "swisnl/filament-backgrounds": "^2.0"
     },
     "require-dev": {
