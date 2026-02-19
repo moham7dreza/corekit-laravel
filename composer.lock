@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1d84ceea138214208d27bdea25e30eb",
+    "content-hash": "7ff31f927092d5f2e097d0c92c9606ee",
     "packages": [
         {
             "name": "alizharb/filament-activity-log",
@@ -6435,6 +6435,83 @@
                 }
             ],
             "time": "2025-02-25T09:09:36+00:00"
+        },
+        {
+            "name": "salmanalmajali/jokes-widget",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SalmanAlmajali/jokes-widget.git",
+                "reference": "683df7d7cf3ec7f148c9bb247df84ec775d9fc31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SalmanAlmajali/jokes-widget/zipball/683df7d7cf3ec7f148c9bb247df84ec775d9fc31",
+                "reference": "683df7d7cf3ec7f148c9bb247df84ec775d9fc31",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0|^4.0|^5.0",
+                "guzzlehttp/guzzle": "^7.10",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.11",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.1",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SalmanAlmajali\\JokesWidget\\JokesWidgetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SalmanAlmajali\\JokesWidget\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Salman Al Majali",
+                    "email": "undermod007@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A fun Filament PHP plugin to display Dad Jokes (Bahasa Indonesia & English) via API. Make your filament dashboard tell a joke",
+            "homepage": "https://github.com/salmanalmajali/jokes-widget",
+            "keywords": [
+                "SalmanAlmajali",
+                "filament",
+                "jokes-widget",
+                "laravel",
+                "widget"
+            ],
+            "support": {
+                "issues": "https://github.com/salmanalmajali/jokes-widget/issues",
+                "source": "https://github.com/salmanalmajali/jokes-widget"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/SalmanAlmajali",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-01-28T16:05:14+00:00"
         },
         {
             "name": "scrivo/highlight.php",
