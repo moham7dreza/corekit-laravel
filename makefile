@@ -95,3 +95,9 @@ rector:
 	vendor/bin/rector process
 rector-test:
 	vendor/bin/rector process --dry-run
+
+ide: ## Generate IDE helper files
+	php artisan ide-helper:generate
+	php artisan ide-helper:models --nowrite
+	php artisan ide-helper:meta
+	php artisan ide-helper:eloquent
