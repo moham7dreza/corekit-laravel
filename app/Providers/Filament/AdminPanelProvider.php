@@ -7,6 +7,7 @@ use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
 use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
+use CraftForge\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -91,6 +92,10 @@ class AdminPanelProvider extends PanelProvider
                 FilamentNotificationSoundPlugin::make(),
                 FilamentUiSwitcherPlugin::make()
                     ->withModeSwitcher(),
+                FilamentLanguageSwitcherPlugin::make()
+                    ->locales(['en', 'fa'])
+                    ->rememberLocale()
+                    ->showOnAuthPages(),
             ]);
     }
 }
