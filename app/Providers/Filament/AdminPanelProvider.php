@@ -21,6 +21,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Carbon;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Moataz01\FilamentNotificationSound\FilamentNotificationSoundPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
@@ -80,7 +81,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-bug-ant')
                     ->navigationBadge()
                     ->navigationGroup('System')
-                    ->modelPruneInterval(now()->subDays(7)),
+                    ->modelPruneInterval(Carbon::now()->subDays(7)),
                 ActivityLogPlugin::make()
                     ->label('Log')
                     ->pluralLabel('Logs')
