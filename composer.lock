@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ff31f927092d5f2e097d0c92c9606ee",
+    "content-hash": "3bc3ffdcb6970771d15b6644d244b31d",
     "packages": [
         {
             "name": "alizharb/filament-activity-log",
@@ -4304,6 +4304,87 @@
                 }
             ],
             "time": "2026-02-09T22:59:54+00:00"
+        },
+        {
+            "name": "moataz-01/filament-notification-sound",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moataz-01/filament-notification-sound.git",
+                "reference": "4a1ed8c87b80a78a3c8bd8b28ecdcb0070bff53c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moataz-01/filament-notification-sound/zipball/4a1ed8c87b80a78a3c8bd8b28ecdcb0070bff53c",
+                "reference": "4a1ed8c87b80a78a3c8bd8b28ecdcb0070bff53c",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0|^5.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/framework": "^12.0",
+                "laravel/pint": "^1.0",
+                "nesbot/carbon": "^3.0",
+                "nunomaduro/collision": "^8.8",
+                "orchestra/testbench": "^10.0",
+                "pestphp/pest": "^3.8|^4.0",
+                "pestphp/pest-plugin-arch": "^3.2|^4.0",
+                "pestphp/pest-plugin-laravel": "^3.2|^4.0",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "spatie/laravel-ray": "^1.43"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentNotificationSound": "Moataz01\\FilamentNotificationSound\\Facades\\FilamentNotificationSound"
+                    },
+                    "providers": [
+                        "Moataz01\\FilamentNotificationSound\\FilamentNotificationSoundServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Moataz01\\FilamentNotificationSound\\": "src/",
+                    "Moataz01\\FilamentNotificationSound\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Moataz",
+                    "email": "moatazsayed119@gmail.com",
+                    "role": "Software Developer"
+                }
+            ],
+            "description": "Add sound notifications to Filament database notifications",
+            "homepage": "https://github.com/moataz-01/filament-notification-sound",
+            "keywords": [
+                "filament-notification-sound",
+                "laravel",
+                "moataz-01"
+            ],
+            "support": {
+                "issues": "https://github.com/moataz-01/filament-notification-sound/issues",
+                "source": "https://github.com/moataz-01/filament-notification-sound"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/moataz-01",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-02-11T13:15:21+00:00"
         },
         {
             "name": "monolog/monolog",
