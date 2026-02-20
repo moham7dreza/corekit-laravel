@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use AlizHarb\ActivityLog\ActivityLogPlugin;
 use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
+use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -85,6 +86,8 @@ class AdminPanelProvider extends PanelProvider
                     ->pluralLabel('Logs')
                     ->navigationGroup('System'),
                 FilamentNotificationSoundPlugin::make(),
+                FilamentUiSwitcherPlugin::make()
+                    ->withModeSwitcher(),
             ]);
     }
 }
