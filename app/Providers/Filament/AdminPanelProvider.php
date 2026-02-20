@@ -18,6 +18,7 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
+use GeoSot\FilamentEnvEditor\FilamentEnvEditorPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -96,6 +97,12 @@ class AdminPanelProvider extends PanelProvider
                     ->locales(['en', 'fa'])
                     ->rememberLocale()
                     ->showOnAuthPages(),
+                FilamentEnvEditorPlugin::make()
+                    ->navigationGroup('System')
+                    ->navigationLabel('My Env')
+                    ->navigationIcon('heroicon-o-cog-8-tooth')
+                    ->navigationSort(1)
+                    ->slug('env-editor'),
             ]);
     }
 }
