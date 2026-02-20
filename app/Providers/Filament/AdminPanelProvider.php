@@ -32,6 +32,8 @@ use SalmanAlmajali\JokesWidget\JokesWidget;
 use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
+use Tapp\FilamentAuthenticationLog\FilamentAuthenticationLogPlugin;
+use Tapp\FilamentMailLog\FilamentMailLogPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -103,6 +105,8 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-cog-8-tooth')
                     ->navigationSort(1)
                     ->slug('env-editor'),
+                FilamentMailLogPlugin::make(),
+                FilamentAuthenticationLogPlugin::make(),
             ]);
     }
 }
