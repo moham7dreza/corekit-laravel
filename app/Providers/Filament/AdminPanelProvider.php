@@ -7,6 +7,7 @@ use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
 use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
+use BezhanSalleh\PanelSwitch\PanelSwitch;
 use CraftForge\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -37,6 +38,11 @@ use Tapp\FilamentMailLog\FilamentMailLogPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
+    public function boot(): void
+    {
+        $this->configurePanelSwitch();
+    }
+
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -108,5 +114,28 @@ class AdminPanelProvider extends PanelProvider
                 FilamentMailLogPlugin::make(),
                 FilamentAuthenticationLogPlugin::make(),
             ]);
+    }
+
+
+    public function configurePanelSwitch(): void
+    {
+        PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
+            $panelSwitch
+                ->panels([
+                    'admin',
+                    'user',
+                ])
+                ->modalWidth('sm')
+                ->slideOver()
+                ->icons([
+                    'admin' => 'heroicon-o-square-2-stack',
+                    'user' => 'heroicon-o-star',
+                ])
+                ->iconSize(16)
+                ->labels([
+                    'admin' => 'Admin Panel',
+                    'user' => 'User Panel',
+                ]);
+        });
     }
 }
