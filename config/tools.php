@@ -15,7 +15,7 @@ return [
     'nightwatch' => [
         'title' => 'Nightwatch',
         'description' => 'Laravel monitoring panel',
-        'url' => 'https://nightwatch.laravel.com/us/environments/9f2c96aa-8c28-4e01-9385-a907a4853111/dashboard',
+        'url' => 'https://nightwatch.laravel.com/ap/environments/a121bf30-e8b5-4012-b547-a1483ae679e8/dashboard?period=1h',
         'heroicon' => 'heroicon-s-bug-ant',
         'icon' => null,
         'group' => null,
@@ -26,15 +26,6 @@ return [
         'description' => 'My github repository',
         'url' => 'https://github.com/moham7dreza',
         'heroicon' => 'heroicon-o-code-bracket',
-        'icon' => null,
-        'group' => null,
-        'sort' => 1,
-    ],
-    'tools' => [
-        'title' => 'Tools',
-        'description' => 'Tools Page',
-        'url' => '/tool',
-        'heroicon' => 'heroicon-o-cube',
         'icon' => null,
         'group' => null,
         'sort' => 1,
@@ -69,7 +60,7 @@ return [
     'backend-admin' => [
         'title' => 'Super Admin Panel',
         'description' => 'Filament admin panel',
-        'url' => '/super-admin',
+        'url' => '/admin',
         'heroicon' => 'heroicon-o-academic-cap',
         'icon' => null,
         'group' => 'Links',
@@ -78,7 +69,7 @@ return [
     'user-panel' => [
         'title' => 'User Panel',
         'description' => 'Front-End user panel',
-        'url' => config('app.frontend_url').'/admin',
+        'url' => '/user',
         'heroicon' => 'heroicon-o-home-modern',
         'icon' => null,
         'group' => 'Links',
