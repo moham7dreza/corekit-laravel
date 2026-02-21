@@ -8,6 +8,7 @@ use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
 use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
 use BezhanSalleh\PanelSwitch\PanelSwitch;
+use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use Cmsmaxinc\FilamentSystemVersions\Filament\Widgets\SystemInfoWidget;
 use Cmsmaxinc\FilamentSystemVersions\FilamentSystemVersionsPlugin;
 use CraftForge\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin;
@@ -56,6 +57,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
+            ->globalSearchKeyBindings(['command+i', 'ctrl+i'])
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -125,6 +127,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('System')
                     ->navigationIcon('heroicon-o-cpu-chip') // Or use Enum
                     ->navigationSort(10),
+                GlobalSearchModalPlugin::make(),
             ]);
     }
 
