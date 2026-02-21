@@ -8,6 +8,8 @@ use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
 use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
 use BezhanSalleh\PanelSwitch\PanelSwitch;
+use Cmsmaxinc\FilamentSystemVersions\Filament\Widgets\SystemInfoWidget;
+use Cmsmaxinc\FilamentSystemVersions\FilamentSystemVersionsPlugin;
 use CraftForge\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -66,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+                SystemInfoWidget::class,
                 JokesWidget::class,
                 WeatherWidget::class,
             ])
@@ -117,6 +120,11 @@ class AdminPanelProvider extends PanelProvider
                     ->slug('env-editor'),
                 FilamentMailLogPlugin::make(),
                 FilamentAuthenticationLogPlugin::make(),
+                FilamentSystemVersionsPlugin::make()
+                    ->navigationLabel('System Info')
+                    ->navigationGroup('System')
+                    ->navigationIcon('heroicon-o-cpu-chip') // Or use Enum
+                    ->navigationSort(10),
             ]);
     }
 

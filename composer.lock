@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07f8d1c185fd229c9b7db7d668f2ad5d",
+    "content-hash": "d7b8869ec7bfea268f49d195cc33fb62",
     "packages": [
         {
             "name": "alizharb/filament-activity-log",
@@ -1163,6 +1163,72 @@
                 }
             ],
             "time": "2024-07-16T11:13:48+00:00"
+        },
+        {
+            "name": "cmsmaxinc/filament-system-versions",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmsmaxinc/filament-system-versions.git",
+                "reference": "c5289e635b563427a63d165c352d0fd391a043c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmsmaxinc/filament-system-versions/zipball/c5289e635b563427a63d165c352d0fd391a043c0",
+                "reference": "c5289e635b563427a63d165c352d0fd391a043c0",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0.0|^5.0.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.1",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentSystemVersions": "Cmsmaxinc\\FilamentSystemVersions\\Facades\\FilamentSystemVersions"
+                    },
+                    "providers": [
+                        "Cmsmaxinc\\FilamentSystemVersions\\FilamentSystemVersionsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cmsmaxinc\\FilamentSystemVersions\\": "src/",
+                    "Cmsmaxinc\\FilamentSystemVersions\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CMS Max"
+                }
+            ],
+            "description": "A comprehensive Filament plugin that provides real-time visibility into all package versions within your Filament PHP application. This essential developer tool creates a centralized dashboard where you can instantly view, monitor, and track the current versions of all installed packages in your project and what the latest version is.",
+            "homepage": "https://github.com/cmsmaxinc/filament-system-versions",
+            "keywords": [
+                "cmsmaxinc",
+                "filament-system-versions",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/cmsmaxinc/filament-system-versions/issues",
+                "source": "https://github.com/cmsmaxinc/filament-system-versions"
+            },
+            "time": "2026-01-27T16:19:08+00:00"
         },
         {
             "name": "craft-forge/filament-language-switcher",
