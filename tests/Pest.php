@@ -1,6 +1,10 @@
 <?php
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithCachedConfig;
+use Illuminate\Foundation\Testing\WithCachedRoutes;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 /*
@@ -15,8 +19,13 @@ use Tests\TestCase;
 */
 
 pest()->extend(TestCase::class)
-    ->use(RefreshDatabase::class)
-    ->in('Feature');
+    ->use(DatabaseTransactions::class)
+    ->use(WithCachedConfig::class)
+    ->use(WithCachedRoutes::class)
+    ->beforeEach(function (): void {
+        Http::preventStrayRequests();
+    })
+    ->in('Feature', 'EndToEnd');
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +51,14 @@ expect()->extend('toBeOne', fn () => $this->toBe(1));
 |
 */
 
-function something(): void
+function asUser(User $user): TestCase
 {
-    // ..
+    return test()->be($user);
+}
+
+function asAnAuthenticatedUser(): TestCase
+{
+    $user = User::factory()->create();
+
+    return asUser($user);
 }

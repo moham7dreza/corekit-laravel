@@ -5,4 +5,7 @@
 @source '../../../../app/Filament/**/*';
 @source '../../../../resources/views/filament/**/*';
 @source '../../../../vendor/bezhansalleh/filament-exceptions/resources/views/**/*.blade.php';
-@source '../../../../vendor/bezhansalleh/filament-language-switch/resources/views/**/*.blade.php';
+@source '../../../../vendor/andreia/filament-ui-switcher';
+@source '../../../../vendor/bezhansalleh/filament-panel-switch/resources/views/**/*.blade.php';
+@source '../../../../vendor/cmsmaxinc/filament-system-versions/resources/**/*.blade.php';
+@source '../../../../vendor/awcodes/overlook/resources/**/*.blade.php';

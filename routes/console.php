@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
+use Cmsmaxinc\FilamentSystemVersions\Commands\CheckDependencyVersions;
+use Illuminate\Support\Facades\Schedule;
 
-Artisan::command('inspire', function (): void {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Schedule::command('telescope:prune')->daily();
+
+Schedule::command('horizon:snapshot')->everyFiveMinutes();
+
+Schedule::command(CheckDependencyVersions::class)->daily();
