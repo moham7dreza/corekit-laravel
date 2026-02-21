@@ -41,6 +41,7 @@ use pxlrbt\FilamentSpotlight\SpotlightPlugin;
 use SalmanAlmajali\JokesWidget\JokesWidget;
 use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
+use Statikbe\FilamentTranslationManager\FilamentChainedTranslationManagerPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 use Tapp\FilamentAuthenticationLog\FilamentAuthenticationLogPlugin;
 use Tapp\FilamentMailLog\FilamentMailLogPlugin;
@@ -145,6 +146,7 @@ class AdminPanelProvider extends PanelProvider
                         '2xl' => null,
                     ]),
                 SpotlightPlugin::make(),
+                FilamentChainedTranslationManagerPlugin::make(),
             ]);
     }
 

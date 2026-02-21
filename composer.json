@@ -38,6 +38,7 @@
         "shuvroroy/filament-spatie-laravel-health": "^3.2",
         "spatie/laravel-data": "^4.19",
         "spatie/laravel-permission": "^7.2",
+        "statikbe/laravel-filament-chained-translation-manager": "^4.2",
         "stechstudio/filament-impersonate": "^5.0",
         "swisnl/filament-backgrounds": "^2.0",
         "tapp/filament-authentication-log": "^5.0",
