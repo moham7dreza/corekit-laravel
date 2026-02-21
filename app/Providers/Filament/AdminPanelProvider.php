@@ -6,6 +6,8 @@ use AlizHarb\ActivityLog\ActivityLogPlugin;
 use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
 use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
+use Awcodes\Overlook\OverlookPlugin;
+use Awcodes\Overlook\Widgets\OverlookWidget;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
 use BezhanSalleh\PanelSwitch\PanelSwitch;
 use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
@@ -72,6 +74,7 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
                 SystemInfoWidget::class,
+                OverlookWidget::class,
                 JokesWidget::class,
                 WeatherWidget::class,
             ])
@@ -130,6 +133,16 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationSort(10),
                 GlobalSearchModalPlugin::make(),
                 FilamentApexChartsPlugin::make(),
+                OverlookPlugin::make()
+                    ->sort(1)
+                    ->columns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'md' => 3,
+                        'lg' => 4,
+                        'xl' => 5,
+                        '2xl' => null,
+                    ]),
             ]);
     }
 
