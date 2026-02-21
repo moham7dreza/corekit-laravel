@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\Scopes\LatestScope;
+{{ factoryImport }}
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Attributes\UseResource;
+use Illuminate\Database\Eloquent\Attributes\UseResourceCollection;
+use Illuminate\Database\Eloquent\Prunable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+#[ScopedBy([LatestScope::class])]
+#[UseResource({{ class }}Resource::class)]
+#[UseResourceCollection({{ class }}Collection::class)]
+#[UseFactory({{ class }}Factory::class)]
+class {{ class }} extends Model
+{
+    {{ factory }}
+    use SoftDeletes;
+    use Prunable;
+
+    protected $guarded = ['id'];
+
+    public function prunable(): Builder
+    {
+        return static::query()->where('created_at', '<=', now()->subMonths(6));
+    }
+
+    protected function casts(): array
+    {
+        return [
+
+        ];
+    }
+}
