@@ -13,6 +13,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -25,6 +26,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Moataz01\FilamentNotificationSound\FilamentNotificationSoundPlugin;
@@ -81,6 +83,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->navigationItems($this->getNavItems())
             ->plugins([
                 FilamentNordThemePlugin::make(),
                 FilamentBackgroundsPlugin::make(),
@@ -138,5 +141,21 @@ class AdminPanelProvider extends PanelProvider
                     'user' => 'User Panel',
                 ]);
         });
+    }
+
+    private function getNavItems(): array
+    {
+        return once(
+            fn () => collect(config('tools'))->except('backend-admin')
+                ->map(
+                    fn (array $tool): NavigationItem => NavigationItem::make()
+                        ->label(fn (): string => trans(Arr::get($tool, 'title')))
+                        ->url(Arr::get($tool, 'url'), shouldOpenInNewTab: true)
+                        ->icon(Arr::get($tool, 'heroicon'))
+                        ->group(Arr::get($tool, 'group'))
+                        ->sort(Arr::get($tool, 'sort'))
+                )
+                ->all()
+        );
     }
 }
