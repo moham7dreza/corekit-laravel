@@ -120,10 +120,9 @@ class AdminPanelProvider extends PanelProvider
             ]);
     }
 
-
     public function configurePanelSwitch(): void
     {
-        PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch) {
+        PanelSwitch::configureUsing(function (PanelSwitch $panelSwitch): void {
             $panelSwitch
                 ->panels([
                     'admin',

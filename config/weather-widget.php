@@ -9,12 +9,10 @@ return [
      */
     'api_key' => env('OPENWEATHER_API_KEY', 'fd67159f5ca62083f27ceabb4a71859c'),
 
-
     /**
      * Default city for weather data
      */
     'city' => 'Tehran',
-
 
     /**
      * Units for temperature and other measurements
@@ -23,7 +21,6 @@ return [
      * Default is 'metric'
      */
     'units' => 'metric',
-
 
     /**
      * Refresh (Poll) interval in minutes

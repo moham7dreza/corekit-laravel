@@ -15,11 +15,12 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    use AuthenticationLoggable;
+
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
     use HasRoles;
     use LogsActivity;
-    use AuthenticationLoggable;
 
     /**
      * The attributes that are mass assignable.
