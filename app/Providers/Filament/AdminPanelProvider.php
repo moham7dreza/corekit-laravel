@@ -32,6 +32,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 use Moataz01\FilamentNotificationSound\FilamentNotificationSoundPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use SalmanAlmajali\JokesWidget\JokesWidget;
@@ -128,6 +129,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-cpu-chip') // Or use Enum
                     ->navigationSort(10),
                 GlobalSearchModalPlugin::make(),
+                FilamentApexChartsPlugin::make(),
             ]);
     }
 

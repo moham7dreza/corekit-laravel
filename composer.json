@@ -27,6 +27,7 @@
         "laravel/telescope": "^5.17",
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.9",
+        "leandrocfe/filament-apex-charts": "^5.0",
         "moataz-01/filament-notification-sound": "^1.0",
         "opcodesio/log-viewer": "^3.21",
         "pxlrbt/filament-environment-indicator": "^3.4",
