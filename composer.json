@@ -32,6 +32,7 @@
         "moataz-01/filament-notification-sound": "^1.0",
         "opcodesio/log-viewer": "^3.21",
         "pxlrbt/filament-environment-indicator": "^3.4",
+        "pxlrbt/filament-excel": "^3.6",
         "pxlrbt/filament-spotlight": "^2.1",
         "salmanalmajali/jokes-widget": "^1.0",
         "shuvroroy/filament-spatie-laravel-backup": "^3.3",

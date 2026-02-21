@@ -8,6 +8,8 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use pxlrbt\FilamentExcel\Actions\ExportAction;
+use pxlrbt\FilamentExcel\Actions\ExportBulkAction;
 use STS\FilamentImpersonate\Actions\Impersonate;
 
 class UsersTable
@@ -39,6 +41,9 @@ class UsersTable
             ->filters([
                 //
             ])
+            ->headerActions([
+                ExportAction::make(),
+            ])
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
@@ -48,6 +53,7 @@ class UsersTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+                ExportBulkAction::make(),
             ]);
     }
 }

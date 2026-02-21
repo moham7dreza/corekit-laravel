@@ -6,6 +6,7 @@ use App\Filament\Resources\Users\UserResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 use Override;
+use pxlrbt\FilamentExcel\Actions\ExportAction;
 
 class ViewUser extends ViewRecord
 {
@@ -16,6 +17,7 @@ class ViewUser extends ViewRecord
     {
         return [
             EditAction::make(),
+            ExportAction::make(),
         ];
     }
 }
