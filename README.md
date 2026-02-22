@@ -1,5 +1,7 @@
 # Laravel Blueprint
-
+<p align="center">
+  <img src="public/images/img.png" width="2543" alt="filament admin">
+</p>
 Opinionated Laravel starter kit built for scalable, maintainable and production-ready applications.
 
 > This repository contains my preferred stack, structure, tooling and architectural decisions for starting new Laravel projects.
