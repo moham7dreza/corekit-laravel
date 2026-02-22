@@ -23,6 +23,7 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\Width;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use GeoSot\FilamentEnvEditor\FilamentEnvEditorPlugin;
@@ -56,12 +57,17 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->spa()
+            ->spa(hasPrefetching: true)
+            ->brandName('Corekit Laravel')
             ->default()
             ->id('admin')
             ->path('admin')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
+            ->unsavedChangesAlerts()
+            ->databaseTransactions()
+            // ->strictAuthorization()
+            ->maxContentWidth(Width::MaxContent)
             ->globalSearchKeyBindings(['command+i', 'ctrl+i'])
             ->colors([
                 'primary' => Color::Amber,
