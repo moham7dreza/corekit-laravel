@@ -33,3 +33,4 @@ frankenphp
 frankenphp-worker.php
 _ide_helper.php
 _ide_helper_models.php
+.phpstorm.meta.php
