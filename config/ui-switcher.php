@@ -17,7 +17,7 @@ return [
     | 2. Add HasUiPreferences trait to your User model
     | 3. Add 'ui_preferences' => 'array' to your User model's $casts
     */
-    'driver' => env('UI_SWITCHER_DRIVER', 'session'),
+    'driver' => env('UI_SWITCHER_DRIVER', 'database'),
 
     /*
     |--------------------------------------------------------------------------

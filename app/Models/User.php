@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Andreia\FilamentUiSwitcher\Models\Traits\HasUiPreferences;
 use App\Enums\UserPermission;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
@@ -25,6 +26,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     use HasRoles;
+    use HasUiPreferences;
     use LogsActivity;
 
     /**
@@ -62,6 +64,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'ui_preferences' => 'array',
         ];
     }
 
