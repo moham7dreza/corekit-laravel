@@ -14,6 +14,8 @@ use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 use Cmsmaxinc\FilamentSystemVersions\Filament\Widgets\SystemInfoWidget;
 use Cmsmaxinc\FilamentSystemVersions\FilamentSystemVersionsPlugin;
 use CraftForge\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin;
+use daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget;
+use daacreators\CreatorsTicketing\TicketingPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -67,7 +69,7 @@ class AdminPanelProvider extends PanelProvider
             ->unsavedChangesAlerts()
             ->databaseTransactions()
             // ->strictAuthorization()
-            ->maxContentWidth(Width::MaxContent)
+            ->maxContentWidth(Width::Full)
             ->globalSearchKeyBindings(['command+i', 'ctrl+i'])
             ->colors([
                 'primary' => Color::Amber,
@@ -85,6 +87,7 @@ class AdminPanelProvider extends PanelProvider
                 OverlookWidget::class,
                 JokesWidget::class,
                 WeatherWidget::class,
+                TicketStatsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -153,6 +156,7 @@ class AdminPanelProvider extends PanelProvider
                     ]),
                 SpotlightPlugin::make(),
                 FilamentChainedTranslationManagerPlugin::make(),
+                TicketingPlugin::make(),
             ]);
     }
 
