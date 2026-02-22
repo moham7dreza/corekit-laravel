@@ -1,138 +1,175 @@
-# Avinar - Laravel Platform
+# Laravel Blueprint
 
-**Avinar** is an online healthcare & counseling platform (MVP Laravel + React) focused on providing confidential mental health, sexual health, and general health consultations. It supports subscriptions, wallet system, appointments, and a professional admin panel.
+Opinionated Laravel starter kit built for scalable, maintainable and production-ready applications.
 
----
-
-## 🚀 Features (Phase 1 MVP)
-
-- User authentication & role management (Patient, Provider, Admin)
-- Provider profiles & verification
-- Category & service management
-- Appointment booking & scheduling
-- Provider services & pricing
-- Admin panel powered by Filament
-- Basic React frontend for user interactions
-- Payment & subscription integration (Stripe / Laravel Cashier)
-- Notification & messaging placeholders
-
-Future Features:
-- Wallet system for users & providers
-- Gamification & badges
-- Multimedia health articles
-- Advanced treatment tracking
-- Video calls & live chat
-- Mobile apps
+> This repository contains my preferred stack, structure, tooling and architectural decisions for starting new Laravel projects.
 
 ---
 
-## ⚙️ Tech Stack
+## 🚀 Goals
 
-- Backend: Laravel 10
-- Frontend: React + Inertia.js (Starter Kit)
-- Database: MySQL / Postgres
-- Caching & Queues: Redis
-- Admin Panel: Filament
-- Payment: Laravel Cashier (Stripe / PayPal)
-- Docker for development & deployment
+- Start projects faster
+- Keep architecture clean and scalable
+- Avoid repeating setup steps
+- Enforce consistent development standards
+- Production-ready from day one
 
 ---
 
-## 📦 Installation
+## 🧱 Stack
 
-1. Clone the repo:
+- Laravel
+- React (if included)
+- Filament (if included)
+- Docker
+- MySQL
+- Redis
+- Mailhog
+- PHPUnit / Pest
+- PHPStan
+- Laravel Pint
+
+---
+
+## 📐 Architectural Decisions
+
+This project follows an opinionated structure:
+
+- Service Layer for business logic
+- Form Requests for validation
+- DTOs for structured data transfer
+- Action classes where needed
+- Enum usage instead of magic values
+- Separation of concerns
+- SOLID principles
+
+Folder structure is organized to improve long-term maintainability.
+
+---
+
+## 🐳 Docker Setup
+
+Make sure Docker is installed.
+
+Run:
 
 ```bash
-git clone https://github.com/yourusername/avinar-laravel.git
-cd avinar-laravel
+make up
 ```
 
-2. Install PHP dependencies:
+Other useful commands:
 
 ```bash
-composer install
+make down
+make migrate
+make seed
+make test
+make fresh
 ```
 
-3. Install Node dependencies:
+---
+
+## ⚙️ Installation
 
 ```bash
-npm install
-npm run dev
-```
-
-4. Copy `.env` and generate key:
-
-```bash
+git clone <repo-url> project-name
+cd project-name
 cp .env.example .env
+composer install
 php artisan key:generate
 ```
 
-5. Set your database & mail configuration in `.env`.
-
-6. Run migrations and seeders:
+If using Docker:
 
 ```bash
-php artisan migrate --seed
+make up
 ```
 
-7. Start the development server:
+---
+
+## 🧪 Testing
 
 ```bash
-php artisan serve
+make test
 ```
 
-Access: `http://localhost:8000`
+or
 
----
-
-## 📚 Project Structure (Phase 1)
-
-```
-app/
- ├─ Models/
- ├─ Services/          # Business logic
- ├─ Repositories/      # Data access
- ├─ Http/
- │    ├─ Controllers/
- │    ├─ Requests/
- │    └─ Resources/
- ├─ Events/
- └─ Listeners/
-
-database/
- ├─ migrations/
- └─ seeders/
-
-resources/
- ├─ js/                # React frontend
- └─ views/
-
-routes/
- ├─ web.php
- └─ api.php
+```bash
+php artisan test
 ```
 
 ---
 
-## 🎨 Branding
+## 🧹 Code Quality
 
-- **Project Name:** Avinar
-- **Tagline:** Talk. Heal. Grow.
-- **Primary Color:** #5DA9E9 (Soft Blue)
-- **Secondary Color:** #7FB069 (Sage Green)
+- Laravel Pint for formatting
+- PHPStan for static analysis
+- Strict typing enabled where possible
 
----
+Run:
 
-## 📌 Contributing
-
-- Follow PSR-12 code style
-- Use feature branches
-- Test before push
-- Submit PRs to `develop` branch
+```bash
+./vendor/bin/pint
+./vendor/bin/phpstan analyse
+```
 
 ---
 
-## 📜 License
+## 🌍 Internationalization
 
-This project is licensed under MIT License.
+- English (LTR)
+- Persian (RTL)
+- Configured for easy language extension
 
+---
+
+## 🔐 Environment Philosophy
+
+- Environment-driven configuration
+- No hardcoded secrets
+- Clear separation between local, staging and production
+
+---
+
+## 📦 Packages Included
+
+(List your installed packages here with short explanation)
+
+Example:
+
+- Telescope – debugging
+- Filament – admin panel
+- Sanctum – API authentication
+
+---
+
+## 🧠 Why This Exists
+
+After working on multiple Laravel projects, I noticed repeated setup tasks and inconsistent structure decisions.
+
+This blueprint represents my evolving engineering standards and preferred development workflow.
+
+It will continue to improve over time.
+
+---
+
+## 🛠 Roadmap
+
+- [ ] Improve Docker optimization
+- [ ] Add CI configuration
+- [ ] Add deployment template
+- [ ] Improve test coverage
+- [ ] Performance baseline setup
+
+---
+
+## 👤 Author
+
+Mohamadreza Rezaei
+
+---
+
+## 📄 License
+
+Private use only (for now).

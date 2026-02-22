@@ -35,12 +35,12 @@ UNAME_S := $(shell uname -s)
 # Set OS-specific variables
 ifeq ($(UNAME_S),Linux)
     OS = linux
-    NEXTJS_PATH = /var/www/avinar-next
+    NEXTJS_PATH = /var/www/corekit-next
     CD_CMD = cd
     EXEC_CMD =
 else ifeq ($(UNAME_S),Darwin)
     OS = macos
-    NEXTJS_PATH = /Users/mohammadreza/Documents/GitHub/avinar-next
+    NEXTJS_PATH = /Users/mohammadreza/Documents/GitHub/corekit-next
     CD_CMD = cd
     EXEC_CMD =
 else
@@ -48,17 +48,17 @@ else
     # Windows paths - adjust based on your setup
     ifneq (,$(findstring Microsoft,$(shell uname -r)))
         # WSL2
-        NEXTJS_PATH = /var/www/avinar-next
+        NEXTJS_PATH = /var/www/corekit-next
         CD_CMD = cd
         EXEC_CMD =
     else ifneq (,$(findstring MINGW,$(UNAME_S)))
         # Git Bash / MinGW
-        NEXTJS_PATH = /c/var/www/avinar-next
+        NEXTJS_PATH = /c/var/www/corekit-next
         CD_CMD = cd
         EXEC_CMD =
     else
         # Native Windows CMD
-        NEXTJS_PATH = C:\var\www\avinar-next
+        NEXTJS_PATH = C:\var\www\corekit-next
         CD_CMD = cd /d
         EXEC_CMD = cmd /C
     endif
@@ -537,8 +537,8 @@ fix-permissions: ## Fix project directory permissions
 	@sudo chmod -R ug+rwx storage bootstrap/cache
 	@printf "${COLOR_GREEN}✓ All permissions fixed successfully!${COLOR_RESET}\n"
 
-setup: ## Configure Nginx for avinar.local
-	@printf "${COLOR_BLUE}▶ Starting avinar.local setup...${COLOR_RESET}\n"
+setup: ## Configure Nginx for corekit.local
+	@printf "${COLOR_BLUE}▶ Starting corekit.local setup...${COLOR_RESET}\n"
 	@printf '%s\n' 'map $$http_upgrade $$connection_upgrade {' \
 	'    default upgrade;' \
 	'    ""      close;' \
@@ -547,9 +547,9 @@ setup: ## Configure Nginx for avinar.local
 	'server {' \
 	'    listen 80;' \
 	'    listen [::]:80;' \
-	'    server_name avinar.local;' \
+	'    server_name corekit.local;' \
 	'    server_tokens off;' \
-	'    root /var/www/avinar-laravel/public;' \
+	'    root /var/www/corekit-laravel/public;' \
 	'' \
 	'    index index.php;' \
 	'' \
@@ -567,7 +567,7 @@ setup: ## Configure Nginx for avinar.local
 	'    location = /robots.txt  { access_log off; log_not_found off; }' \
 	'' \
 	'    access_log off;' \
-	'    error_log  /var/log/nginx/avinar-error.log error;' \
+	'    error_log  /var/log/nginx/corekit-error.log error;' \
 	'' \
 	'    error_page 404 /index.php;' \
 	'' \
@@ -589,25 +589,25 @@ setup: ## Configure Nginx for avinar.local
 	'' \
 	'        proxy_pass http://127.0.0.1:9000$$suffix;' \
 	'    }' \
-	'}' | sudo tee /etc/nginx/sites-available/avinar >/dev/null
+	'}' | sudo tee /etc/nginx/sites-available/corekit >/dev/null
 
-	@sudo ln -sf /etc/nginx/sites-available/avinar /etc/nginx/sites-enabled/
+	@sudo ln -sf /etc/nginx/sites-available/corekit /etc/nginx/sites-enabled/
 	@sudo nginx -t
 	@sudo systemctl reload nginx
 	@sudo systemctl reload ${PHP_VERSION}-fpm
-	@if ! grep -q "avinar.local" /etc/hosts; then \
-		sudo sed -i '1s/^/127.0.0.1 avinar.local\n/' /etc/hosts; \
-		printf "${COLOR_GREEN}✓ Added avinar.local to /etc/hosts${COLOR_RESET}\n"; \
+	@if ! grep -q "corekit.local" /etc/hosts; then \
+		sudo sed -i '1s/^/127.0.0.1 corekit.local\n/' /etc/hosts; \
+		printf "${COLOR_GREEN}✓ Added corekit.local to /etc/hosts${COLOR_RESET}\n"; \
 	else \
-		printf "${COLOR_YELLOW}ℹ avinar.local already exists in /etc/hosts${COLOR_RESET}\n"; \
+		printf "${COLOR_YELLOW}ℹ corekit.local already exists in /etc/hosts${COLOR_RESET}\n"; \
 	fi
-	@printf "${COLOR_GREEN}✓ avinar.local setup completed!${COLOR_RESET}\n"
+	@printf "${COLOR_GREEN}✓ corekit.local setup completed!${COLOR_RESET}\n"
 
 setup-worker: ## Configure Supervisor for Laravel queue worker
 	@printf "${COLOR_BLUE}▶ Starting Laravel worker setup...${COLOR_RESET}\n"
 	@printf '%s\n' '[program:laravel-worker]' \
 	'process_name=%(program_name)s_%(process_num)02d' \
-	'command=php /var/www/avinar-laravel/artisan queue:work redis --sleep=3 --tries=3 --max-time=86400' \
+	'command=php /var/www/corekit-laravel/artisan queue:work redis --sleep=3 --tries=3 --max-time=86400' \
 	'autostart=true' \
 	'autorestart=true' \
 	'stopasgroup=true' \
@@ -615,7 +615,7 @@ setup-worker: ## Configure Supervisor for Laravel queue worker
 	'user=www-data' \
 	'numprocs=8' \
 	'redirect_stderr=true' \
-	'stdout_logfile=/var/www/avinar-laravel/storage/logs/worker.log' \
+	'stdout_logfile=/var/www/corekit-laravel/storage/logs/worker.log' \
 	'stopwaitsecs=3600' | sudo tee /etc/supervisor/conf.d/laravel-worker.conf >/dev/null
 
 	@sudo supervisorctl reread >/dev/null
@@ -634,12 +634,12 @@ setup-horizon: ## Configure Supervisor for Laravel horizon
 	@printf "${COLOR_BLUE}▶ Starting Laravel horizon setup...${COLOR_RESET}\n"
 	@printf '%s\n' '[program:horizon]' \
 	'process_name=%(program_name)s_%(process_num)02d' \
-	'command=php /var/www/avinar-laravel/artisan horizon' \
+	'command=php /var/www/corekit-laravel/artisan horizon' \
 	'autostart=true' \
 	'autorestart=true' \
 	'user=www-data' \
 	'redirect_stderr=true' \
-	'stdout_logfile=/var/www/avinar-laravel/storage/logs/horizon.log' \
+	'stdout_logfile=/var/www/corekit-laravel/storage/logs/horizon.log' \
 	'stopwaitsecs=3600' | sudo tee /etc/supervisor/conf.d/horizon.conf >/dev/null
 
 	@sudo supervisorctl reread >/dev/null
