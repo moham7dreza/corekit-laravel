@@ -16,29 +16,6 @@ enum UserPermission: string
 
     case ManageUsers = 'manage_users';
 
-    // Advertisement
-    case EditAd = 'edit_ad';
-
-    case EditAds = 'edit_ads';
-
-    case CreateAd = 'create_ad';
-
-    case DestroyAd = 'destroy_ad';
-
-    case PublishAd = 'publish_ad';
-    case Upload = 'upload';
-
-    // @todo:high: unused
-    public function isAdminLevel(): bool
-    {
-        $permissions = [
-            self::SeePanel,
-            self::ManageUsers,
-        ];
-
-        return in_array($this, $permissions, true);
-    }
-
     public function model(): Permission
     {
         return Permission::findByName($this->value);

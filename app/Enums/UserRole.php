@@ -25,9 +25,7 @@ enum UserRole: string
     {
         return match ($this) {
             self::Admin => P::cases(),
-            self::Premium => [
-                P::Upload,
-            ],
+            self::Premium => [],
         };
     }
 
