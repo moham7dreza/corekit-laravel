@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
+use App\Enums\UserPermission;
+use App\Models\User;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Laravel\Pulse\Facades\Pulse;
 use Override;
 use Spatie\Health\Checks\Checks\BackupsCheck;
 use Spatie\Health\Checks\Checks\CacheCheck;
@@ -44,6 +48,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
         $this->runHealthChecks();
+        $this->configureGate();
+        $this->configurePulse();
     }
 
     /**
@@ -120,6 +126,22 @@ class AppServiceProvider extends ServiceProvider
             RedisMemoryUsageCheck::new()
                 ->warnWhenAboveMb(900)
                 ->failWhenAboveMb(1000),
+        ]);
+    }
+
+    private function configureGate(): void
+    {
+        Gate::define('viewPulse', function (User $user) {
+            return $user->checkPermissionTo(UserPermission::SeePanel);
+        });
+    }
+
+    private function configurePulse(): void
+    {
+        Pulse::user(fn ($user) => [
+            'name' => $user->name,
+            'extra' => $user->email,
+            'avatar' => $user->avatar,
         ]);
     }
 }

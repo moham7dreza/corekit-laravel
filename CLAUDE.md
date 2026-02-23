@@ -18,6 +18,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - laravel/nightwatch (NIGHTWATCH) - v1
 - laravel/octane (OCTANE) - v2
 - laravel/prompts (PROMPTS) - v0
+- laravel/pulse (PULSE) - v1
 - laravel/reverb (REVERB) - v1
 - laravel/telescope (TELESCOPE) - v5
 - laravel/wayfinder (WAYFINDER) - v0
@@ -34,6 +35,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - react (REACT) - v19
 - @laravel/vite-plugin-wayfinder (WAYFINDER_VITE) - v0
 - eslint (ESLINT) - v9
+- laravel-echo (ECHO) - v2
 - prettier (PRETTIER) - v3
 - tailwindcss (TAILWINDCSS) - v4
 
