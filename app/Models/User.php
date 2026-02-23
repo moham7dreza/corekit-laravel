@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Andreia\FilamentUiSwitcher\Models\Traits\HasUiPreferences;
 use App\Enums\UserPermission;
+use daacreators\CreatorsTicketing\Models\Ticket;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -77,5 +79,10 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->checkPermissionTo(UserPermission::SeePanel);
+    }
+
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class);
     }
 }
