@@ -131,14 +131,12 @@ class AppServiceProvider extends ServiceProvider
 
     private function configureGate(): void
     {
-        Gate::define('viewPulse', function (User $user) {
-            return $user->checkPermissionTo(UserPermission::SeePanel);
-        });
+        Gate::define('viewPulse', fn (User $user): bool => $user->checkPermissionTo(UserPermission::SeePanel));
     }
 
     private function configurePulse(): void
     {
-        Pulse::user(fn ($user) => [
+        Pulse::user(fn ($user): array => [
             'name' => $user->name,
             'extra' => $user->email,
             'avatar' => $user->avatar,

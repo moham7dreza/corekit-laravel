@@ -1,5 +1,7 @@
 <?php
 
+use Filament\Support\Icons\Heroicon;
+
 return [
 
     /*
@@ -99,5 +101,5 @@ return [
      | For null value, the icon will be hidden.
      |
      */
-    'navigation_icon' => \Filament\Support\Icons\Heroicon::OutlinedLanguage,
+    'navigation_icon' => Heroicon::OutlinedLanguage,
 ];

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 return [
 
     /*
@@ -18,7 +20,7 @@ return [
     | User Model
     |--------------------------------------------------------------------------
     */
-    'user_model' => env('USER_MODEL', \App\Models\User::class),
+    'user_model' => env('USER_MODEL', User::class),
 
     /*
     |--------------------------------------------------------------------------
@@ -49,7 +51,7 @@ return [
     'navigation_visibility' => [
         'field' => env('TICKETING_NAV_FIELD', 'email'),
         'allowed' => array_filter(
-            array_map('trim', explode(',', env('TICKETING_NAV_ALLOWED', 'admin@admin.com')))
+            array_map(trim(...), explode(',', (string) env('TICKETING_NAV_ALLOWED', 'admin@admin.com')))
         ),
     ],
 
@@ -86,7 +88,6 @@ return [
     |
     */
     'ticket_limit_message' => env('TICKET_LIMIT_MESSAGE', 'You have reached the maximum number of open tickets. Please wait for an existing ticket to be resolved before creating a new one.'),
-
 
     /*
     |--------------------------------------------------------------------------
