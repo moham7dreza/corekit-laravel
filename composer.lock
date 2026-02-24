@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17ec6889510d7490e6351c7c8288f7c9",
+    "content-hash": "0fefeb0b2e8bc1030c9fe84ded0402c2",
     "packages": [
         {
             "name": "alizharb/filament-activity-log",
@@ -7748,6 +7748,76 @@
             "time": "2026-02-18T15:52:06+00:00"
         },
         {
+            "name": "novius/laravel-filament-page-manager",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/novius/laravel-filament-page-manager.git",
+                "reference": "3eaa82a04f69467a2c06eb91288bff258db0662e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/novius/laravel-filament-page-manager/zipball/3eaa82a04f69467a2c06eb91288bff258db0662e",
+                "reference": "3eaa82a04f69467a2c06eb91288bff258db0662e",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0 | ^5.0",
+                "laravel/framework": "^11.0 | ^12.0",
+                "novius/laravel-filament-action-preview": "^1.0.0",
+                "novius/laravel-filament-publishable": "^1.0.0",
+                "novius/laravel-filament-slug": "^1.0.0",
+                "novius/laravel-filament-translatable": "^1.0.0",
+                "novius/laravel-json-casted": "^1.0.0",
+                "novius/laravel-linkable": "^2.0.0",
+                "novius/laravel-meta": "^1.2.0",
+                "php": ">=8.2",
+                "spatie/laravel-sluggable": "^3.4"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.0 | ^3.0",
+                "laravel/pint": "^1.7",
+                "orchestra/testbench": "^10.3",
+                "roave/security-advisories": "dev-latest"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Novius\\LaravelFilamentPageManager\\LaravelFilamentPageManagerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Novius\\LaravelFilamentPageManager\\": "src/",
+                    "Novius\\LaravelFilamentPageManager\\Database\\Seeders\\": "database/seeders"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Novius Agency",
+                    "email": "team-developpeurs@novius.com",
+                    "homepage": "https://www.novius.com"
+                }
+            ],
+            "description": "A Laravel Filament package to manage pages.",
+            "keywords": [
+                "filament",
+                "laravel",
+                "page-manager"
+            ],
+            "support": {
+                "issues": "https://github.com/novius/laravel-filament-page-manager/issues",
+                "source": "https://github.com/novius/laravel-filament-page-manager/tree/1.0.2"
+            },
+            "time": "2026-02-19T13:07:48+00:00"
+        },
+        {
             "name": "novius/laravel-filament-publishable",
             "version": "1.0.0",
             "source": {
@@ -7934,6 +8004,69 @@
                 "source": "https://github.com/novius/laravel-filament-translatable"
             },
             "time": "2026-02-18T13:37:36+00:00"
+        },
+        {
+            "name": "novius/laravel-json-casted",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/novius/laravel-json-casted.git",
+                "reference": "aa56eeb03892b09a339845a193fa811058565633"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/novius/laravel-json-casted/zipball/aa56eeb03892b09a339845a193fa811058565633",
+                "reference": "aa56eeb03892b09a339845a193fa811058565633",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^10.0 | ^11.0| ^12.0",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "barryvdh/laravel-ide-helper": "^3.1",
+                "larastan/larastan": "^2.0 | ^3.0",
+                "laravel/pint": "^1.17.0",
+                "orchestra/testbench": "^9.0 | ^10.0",
+                "pestphp/pest": "^2.34.9 | ^v3.7.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Novius\\LaravelJsonCasted\\LaravelJsonCastedServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Novius\\LaravelJsonCasted\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Novius Agency",
+                    "email": "team-developpeurs@novius.com",
+                    "homepage": "https://www.novius.com"
+                }
+            ],
+            "description": "A package to cast json fields, each sub-keys is castable",
+            "homepage": "https://github.com/novius/laravel-json-casted",
+            "keywords": [
+                "cast",
+                "eloquent",
+                "json",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/novius/laravel-json-casted/issues",
+                "source": "https://github.com/novius/laravel-json-casted"
+            },
+            "time": "2025-06-25T14:58:03+00:00"
         },
         {
             "name": "novius/laravel-linkable",

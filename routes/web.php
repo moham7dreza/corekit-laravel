@@ -11,3 +11,5 @@ Route::get('/', fn () => Inertia::render('welcome', [
 Route::get('dashboard', fn () => Inertia::render('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/settings.php';
+
+\Novius\LaravelFilamentPageManager\Facades\PageManager::routes();

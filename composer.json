@@ -36,6 +36,7 @@
         "moataz-01/filament-notification-sound": "^1.0",
         "munafio/chatify": "^1.6",
         "novius/laravel-filament-news": "^1.0",
+        "novius/laravel-filament-page-manager": "^1.0",
         "opcodesio/log-viewer": "^3.21",
         "pxlrbt/filament-environment-indicator": "^3.4",
         "pxlrbt/filament-excel": "^3.6",

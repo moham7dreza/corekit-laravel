@@ -41,6 +41,7 @@ use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 use MmesDesign\FilamentFileManager\FileManagerPlugin;
 use Moataz01\FilamentNotificationSound\FilamentNotificationSoundPlugin;
 use Novius\LaravelFilamentNews\Filament\NewsPlugin;
+use Novius\LaravelFilamentPageManager\Filament\PageManagerPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
 use SalmanAlmajali\JokesWidget\JokesWidget;
@@ -165,6 +166,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-folder')
                     ->navigationSort(1),
                 NewsPlugin::make(),
+                PageManagerPlugin::make(),
             ]);
     }
 
