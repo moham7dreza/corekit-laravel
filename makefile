@@ -425,6 +425,7 @@ app-fix:
 	make rector
 	make pint
 	make test-p
+	make filacheck
 
 app-quick-fix:
 	make rector
@@ -469,6 +470,13 @@ rector: ## Run rector analysis and change files
 
 rector-rules:
 	vendor/bin/rector list-rules
+
+# --------------------------------------------------------------------------
+# Filament
+# --------------------------------------------------------------------------
+
+filacheck: # Scan default app/Filament directory
+	vendor/bin/filacheck --detailed
 
 # --------------------------------------------------------------------------
 # Boost
