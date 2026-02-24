@@ -38,6 +38,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
+use MmesDesign\FilamentFileManager\FileManagerPlugin;
 use Moataz01\FilamentNotificationSound\FilamentNotificationSoundPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
@@ -157,6 +158,11 @@ class AdminPanelProvider extends PanelProvider
                 SpotlightPlugin::make(),
                 FilamentChainedTranslationManagerPlugin::make(),
                 TicketingPlugin::make(),
+                FileManagerPlugin::make()
+                    ->defaultDisk('public')
+                    ->navigationGroup('Content')
+                    ->navigationIcon('heroicon-o-folder')
+                    ->navigationSort(1),
             ]);
     }
 

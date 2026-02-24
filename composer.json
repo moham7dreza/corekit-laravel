@@ -32,6 +32,7 @@
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.9",
         "leandrocfe/filament-apex-charts": "^5.0",
+        "mmes-design/filament-file-manager": "^1.0",
         "moataz-01/filament-notification-sound": "^1.0",
         "munafio/chatify": "^1.6",
         "opcodesio/log-viewer": "^3.21",
