@@ -265,8 +265,8 @@ pint: ## Run PHP code style fixer
 # --------------------------------------------------------------------------
 
 start: ## Start all development servers
-	@npx concurrently -k -n "QUEUE,HORIZON,REVERB,OCTANE,VITE,SCHEDULE,PULSE,NEXT,LOGGING,NIGHTWATCH" \
-		-c "green,blue,magenta,cyan,yellow,red,gray,black,white,green" \
+	@npx concurrently -k -n "QUEUE,HORIZON,REVERB,OCTANE,VITE,SCHEDULE,PULSE,LOGGING,NIGHTWATCH" \
+		-c "green,blue,magenta,cyan,yellow,red,gray,white,green" \
 		"${ENTRYPOINT} php artisan queue:listen" \
 		"${ENTRYPOINT} php artisan horizon" \
 		"${ENTRYPOINT} php artisan reverb:start --debug" \
@@ -274,13 +274,12 @@ start: ## Start all development servers
 		"npm run dev" \
 		"${ENTRYPOINT} php artisan schedule:work" \
 		"${ENTRYPOINT} php artisan pulse:work" \
-		"make next-dev" \
         "${ENTRYPOINT} php artisan pail --timeout=86400" \
         "${ENTRYPOINT} php artisan nightwatch:agent"
 
 serve: ## Start basic servers
-	@npx concurrently -k -n "QUEUE,HORIZON,REVERB,SERVER,VITE,SCHEDULE,PULSE,NEXT,LOGGING,NIGHTWATCH" \
-		-c "green,blue,magenta,cyan,yellow,red,gray,black,white,green" \
+	@npx concurrently -k -n "QUEUE,HORIZON,REVERB,SERVER,VITE,SCHEDULE,PULSE,LOGGING,NIGHTWATCH" \
+		-c "green,blue,magenta,cyan,yellow,red,gray,white,green" \
 		"${ENTRYPOINT} php artisan queue:listen" \
 		"${ENTRYPOINT} php artisan horizon" \
 		"${ENTRYPOINT} php artisan reverb:start --debug" \
@@ -288,7 +287,6 @@ serve: ## Start basic servers
 		"npm run dev" \
 		"${ENTRYPOINT} php artisan schedule:run-cronless" \
 		"${ENTRYPOINT} php artisan pulse:work" \
-		"make next-dev" \
 		"${ENTRYPOINT} php artisan pail --timeout=86400" \
 		"${ENTRYPOINT} php artisan nightwatch:agent"
 
