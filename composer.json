@@ -35,6 +35,7 @@
         "mmes-design/filament-file-manager": "^1.0",
         "moataz-01/filament-notification-sound": "^1.0",
         "munafio/chatify": "^1.6",
+        "notebrainslab/filament-menu-manager": "^1.0",
         "novius/laravel-filament-news": "^1.0",
         "novius/laravel-filament-page-manager": "^1.0",
         "opcodesio/log-viewer": "^3.21",

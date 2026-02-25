@@ -1,0 +1,503 @@
+/* ============================================================
+   Filament Menu Manager — Styles
+   Dark theme is handled automatically via .dark class (Filament)
+   ============================================================ */
+
+/* ================== Layout ================= */
+.fmm-manager {
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .fmm-manager {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================== Location / Menu Bar ================= */
+.fmm-location-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.fmm-location-btn,
+.fmm-menu-btn {
+    padding: 0.375rem 0.875rem;
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    background: var(--fmm-btn-bg);
+    color: var(--fmm-btn-text);
+    border-color: var(--fmm-btn-border);
+}
+
+.fmm-location-btn:hover,
+.fmm-menu-btn:hover {
+    background: var(--fmm-btn-hover-bg);
+    border-color: var(--fmm-accent);
+    color: var(--fmm-accent);
+}
+
+.fmm-location-btn.active,
+.fmm-menu-btn.active {
+    background: var(--fmm-accent);
+    color: #fff;
+    border-color: var(--fmm-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--fmm-accent) 30%, transparent);
+}
+
+/* ================== Builder Container ================= */
+.fmm-builder-card {
+    background: var(--fmm-card-bg);
+    border: 1.5px solid var(--fmm-border);
+    border-radius: 0.875rem;
+    overflow: hidden;
+    box-shadow: 0 1px 4px var(--fmm-shadow);
+}
+
+.fmm-builder-header {
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1.5px solid var(--fmm-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--fmm-text);
+}
+
+.fmm-root-list {
+    padding: 0.75rem;
+}
+
+/* ================== Menu Item Row ================= */
+.fmm-item-row {
+    margin-bottom: 0.375rem;
+    user-select: none;
+}
+
+.fmm-item-card {
+    display: flex;
+    align-items: stretch;
+    border: 1.5px solid var(--fmm-border);
+    border-radius: 0.625rem;
+    background: var(--fmm-item-bg);
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    overflow: hidden;
+}
+
+.fmm-item-card:hover {
+    border-color: var(--fmm-accent);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--fmm-accent) 15%, transparent);
+}
+
+.fmm-item-card.disabled-item {
+    opacity: 0.5;
+}
+
+/* Drag handle */
+.fmm-drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    cursor: grab;
+    color: var(--fmm-muted);
+    background: var(--fmm-handle-bg);
+    border-right: 1.5px solid var(--fmm-border);
+    flex-shrink: 0;
+    transition: background 0.15s;
+}
+
+.fmm-drag-handle:hover {
+    background: var(--fmm-handle-hover-bg);
+    color: var(--fmm-accent);
+}
+
+.fmm-drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Item body */
+.fmm-item-body {
+    flex: 1;
+    padding: 0.6rem 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.fmm-item-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--fmm-text);
+}
+
+.fmm-item-url {
+    font-size: 0.75rem;
+    color: var(--fmm-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 320px;
+}
+
+.fmm-item-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: var(--fmm-badge-bg);
+    color: var(--fmm-badge-text);
+}
+
+/* Item actions */
+.fmm-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.375rem 0.625rem;
+    flex-shrink: 0;
+}
+
+.fmm-action-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fmm-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.fmm-action-btn:hover {
+    background: var(--fmm-btn-hover-bg);
+    color: var(--fmm-text);
+}
+
+.fmm-action-btn.danger:hover {
+    background: rgb(254 226 226);
+    color: rgb(185 28 28);
+}
+
+.dark .fmm-action-btn.danger:hover {
+    background: rgb(69 10 10);
+    color: rgb(252 165 165);
+}
+
+/* ================== Nested children ================= */
+.fmm-nested-list {
+    margin-top: 0.375rem;
+    margin-left: 2.25rem;
+    padding-left: 0.875rem;
+    border-left: 2px dashed var(--fmm-border);
+}
+
+/* ================== Inline Edit Form ================= */
+.fmm-edit-form {
+    background: var(--fmm-edit-bg);
+    border: 1.5px solid var(--fmm-accent);
+    border-radius: 0.625rem;
+    padding: 0.875rem;
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.fmm-edit-form input,
+.fmm-edit-form select {
+    width: 100%;
+    padding: 0.4rem 0.625rem;
+    border-radius: 0.375rem;
+    border: 1.5px solid var(--fmm-border);
+    background: var(--fmm-input-bg);
+    color: var(--fmm-text);
+    font-size: 0.8125rem;
+    transition: border-color 0.15s;
+    outline: none;
+}
+
+.fmm-edit-form input:focus,
+.fmm-edit-form select:focus {
+    border-color: var(--fmm-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--fmm-accent) 20%, transparent);
+}
+
+.fmm-edit-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.fmm-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--fmm-muted);
+    margin-bottom: 0.2rem;
+}
+
+.fmm-edit-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* ================== Panel (sidebar) ================= */
+.fmm-panel-card {
+    background: var(--fmm-card-bg);
+    border: 1.5px solid var(--fmm-border);
+    border-radius: 0.875rem;
+    overflow: hidden;
+    box-shadow: 0 1px 4px var(--fmm-shadow);
+}
+
+.fmm-panel-tabs {
+    display: flex;
+    border-bottom: 1.5px solid var(--fmm-border);
+    background: var(--fmm-handle-bg);
+}
+
+.fmm-panel-tab {
+    flex: 1;
+    padding: 0.625rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    color: var(--fmm-muted);
+    border: none;
+    background: transparent;
+    border-bottom: 2.5px solid transparent;
+    transition: all 0.15s;
+    margin-bottom: -1.5px;
+}
+
+.fmm-panel-tab.active {
+    color: var(--fmm-accent);
+    border-bottom-color: var(--fmm-accent);
+    background: var(--fmm-card-bg);
+}
+
+.fmm-panel-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.fmm-panel-section-header {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--fmm-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Model records list */
+.fmm-model-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.fmm-model-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.625rem;
+    border-radius: 0.5rem;
+    border: 1.5px solid var(--fmm-border);
+    background: var(--fmm-item-bg);
+    font-size: 0.8125rem;
+    color: var(--fmm-text);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.fmm-model-item:hover {
+    border-color: var(--fmm-accent);
+    background: color-mix(in srgb, var(--fmm-accent) 6%, var(--fmm-item-bg));
+}
+
+/* ================== Empty state ================= */
+.fmm-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    color: var(--fmm-muted);
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.fmm-empty svg {
+    width: 3rem;
+    height: 3rem;
+    opacity: 0.35;
+}
+
+/* ================== Auto-save flash ================= */
+#fmm-autosave-flash {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: rgb(34 197 94);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.15);
+    opacity: 0;
+    transform: translateY(0.5rem);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+}
+
+#fmm-autosave-flash.fmm-flash-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================== Modal (New) ================= */
+.fmm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgba(17, 24, 39, 0.5); /* gray-900/50 */
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s;
+}
+
+.fmm-modal-content {
+    background: var(--fmm-card-bg);
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    max-width: 28rem;
+    overflow: hidden;
+    color: var(--fmm-text);
+    border: 1px solid var(--fmm-border);
+    animation: fmm-modal-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fmm-modal-pop {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.fmm-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.fmm-btn-secondary {
+    background: var(--fmm-btn-bg);
+    color: var(--fmm-btn-text);
+    border-color: var(--fmm-btn-border);
+}
+
+.fmm-btn-secondary:hover {
+    background: var(--fmm-btn-hover-bg);
+}
+
+.fmm-btn-danger {
+    background: #dc2626; /* red-600 */
+    color: white;
+}
+
+.fmm-btn-danger:hover {
+    background: #b91c1c; /* red-700 */
+}
+
+/* ================== Drag-drop visual states ================= */
+.fmm-ghost {
+    opacity: 0.4;
+}
+
+.fmm-chosen .fmm-item-card {
+    border-color: var(--fmm-accent);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--fmm-accent) 25%, transparent);
+}
+
+.fmm-dragging {
+    transform: rotate(1.5deg);
+    box-shadow: 0 8px 30px rgb(0 0 0 / 0.2);
+}
+
+/* ================== CSS Custom Properties (Theme) ================= */
+:root {
+    --fmm-accent: rgb(99 102 241);
+    /* Indigo 500 */
+    --fmm-card-bg: #ffffff;
+    --fmm-item-bg: #f9fafb;
+    --fmm-handle-bg: #f3f4f6;
+    --fmm-handle-hover-bg: #e5e7eb;
+    --fmm-border: #e5e7eb;
+    --fmm-text: #111827;
+    --fmm-muted: #6b7280;
+    --fmm-shadow: rgba(0, 0, 0, 0.05);
+    --fmm-btn-bg: #f9fafb;
+    --fmm-btn-text: #374151;
+    --fmm-btn-border: #d1d5db;
+    --fmm-btn-hover-bg: #f3f4f6;
+    --fmm-edit-bg: #f0f9ff;
+    --fmm-input-bg: #ffffff;
+    --fmm-badge-bg: #e0e7ff;
+    --fmm-badge-text: #4338ca;
+}
+
+/* Dark mode — Filament applies .dark to <html> */
+.dark {
+    --fmm-accent: rgb(129 140 248);
+    /* Indigo 400 */
+    --fmm-card-bg: #1e1e2e;
+    --fmm-item-bg: #27273a;
+    --fmm-handle-bg: #1a1a28;
+    --fmm-handle-hover-bg: #252538;
+    --fmm-border: #3b3b52;
+    --fmm-text: #e2e8f0;
+    --fmm-muted: #94a3b8;
+    --fmm-shadow: rgba(0, 0, 0, 0.3);
+    --fmm-btn-bg: #27273a;
+    --fmm-btn-text: #cbd5e1;
+    --fmm-btn-border: #3b3b52;
+    --fmm-btn-hover-bg: #2d2d42;
+    --fmm-edit-bg: #1e253a;
+    --fmm-input-bg: #27273a;
+    --fmm-badge-bg: #312e81;
+    --fmm-badge-text: #c7d2fe;
+}

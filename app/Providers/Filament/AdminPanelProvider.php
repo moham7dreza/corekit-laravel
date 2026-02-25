@@ -40,6 +40,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 use MmesDesign\FilamentFileManager\FileManagerPlugin;
 use Moataz01\FilamentNotificationSound\FilamentNotificationSoundPlugin;
+use NoteBrainsLab\FilamentMenuManager\FilamentMenuManagerPlugin;
 use Novius\LaravelFilamentNews\Filament\NewsPlugin;
 use Novius\LaravelFilamentPageManager\Filament\PageManagerPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
@@ -167,6 +168,12 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationSort(1),
                 NewsPlugin::make(),
                 PageManagerPlugin::make(),
+                FilamentMenuManagerPlugin::make()
+                    ->locations(['primary' => 'Primary', 'footer' => 'Footer'])
+                    ->navigationGroup('Content')
+                    ->navigationIcon('heroicon-o-bars-3')
+                    ->navigationSort(2)
+                    ->navigationLabel('Menus'),
             ]);
     }
 
