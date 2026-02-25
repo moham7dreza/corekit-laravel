@@ -502,7 +502,9 @@ notes:
 	${ENTRYPOINT} php artisan ghost:write
 
 upgrade:
+	composer install
 	composer update
+	npm install
 	npm update
 
 vendor-routes: ## Show list of routes that are registered by packages
