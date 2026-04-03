@@ -1,0 +1,18 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [1.0.0] - 2026-01-01
+
+### Added
+- Initial CoreKit Laravel template release
+- Pre-installed packages and base configuration
+- Authentication scaffolding
+- Dashboard layout and components
+
+### Features
+- Laravel 10.x base
+- Bootstrap/Tailwind setup
+- Common utilities and helpers
+
+---
