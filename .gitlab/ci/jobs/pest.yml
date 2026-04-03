@@ -1,0 +1,41 @@
+# .gitlab/ci/jobs/pest.yml
+# ============================================================
+# Pest Tests
+# ============================================================
+
+pest:
+  stage: test
+  image: ghcr.io/shivammathur/php-extensions/php:8.4-mysql
+  services:
+    - name: mysql:8.0
+      alias: mysql
+  variables:
+    MYSQL_ROOT_PASSWORD: root_secret
+    MYSQL_DATABASE: laravel_test
+    MYSQL_USER: test_user
+    MYSQL_PASSWORD: test_secret
+    DB_HOST: mysql
+    DB_DATABASE: laravel_test
+    DB_USERNAME: test_user
+    DB_PASSWORD: test_secret
+  script:
+    - composer install --no-interaction --prefer-dist --optimize-autoloader
+    - cp .env.example .env
+    - php artisan key:generate --force
+    - php artisan config:cache
+    - php artisan migrate --force
+    - php artisan db:seed --force
+    - ./vendor/bin/pest --colors=never
+  coverage: '/\s+Lines:\s+(\d+\.\d+)%/'
+  artifacts:
+    reports:
+      junit: reports/junit.xml
+    paths:
+      - reports/
+    expire_in: 1 week
+  only:
+    - master
+    - develop
+    - merge_requests
+  tags:
+    - docker

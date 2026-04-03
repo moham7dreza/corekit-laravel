@@ -1,0 +1,47 @@
+# .gitlab/ci/deploy/production.yml
+# ============================================================
+# Deploy to Production
+# ============================================================
+
+deploy-production:
+  stage: deploy
+  image: alpine:latest
+  variables:
+    PRODUCTION_SERVER_IP: $PRODUCTION_SERVER_IP
+    PRODUCTION_SSH_USER: $PRODUCTION_SSH_USER
+    APP_PATH: /var/www/production
+  script:
+    - apk add --no-cache openssh-client openssl
+    - eval $(ssh-agent -s)
+    - echo "$PRODUCTION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $PRODUCTION_SERVER_IP >> ~/.ssh/known_hosts
+
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan backup:run --only-db || true"
+
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && git pull origin master"
+
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && composer install --no-dev --optimize-autoloader"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && npm ci --production"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && npm run build"
+
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan migrate --force"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan config:cache"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan route:cache"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan view:cache"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan event:cache"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan filament:cache"
+
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && php artisan queue:restart"
+    - ssh $PRODUCTION_SSH_USER@$PRODUCTION_SERVER_IP "cd $APP_PATH && nohup php artisan schedule:work > /dev/null 2>&1 &"
+
+    - echo "Deploy to production completed!"
+  environment:
+    name: production
+    url: https://yourdomain.com
+  only:
+    - master
+  when: manual
+  tags:
+    - docker

@@ -1,0 +1,18 @@
+# .gitlab/ci/jobs/pint.yml
+# ============================================================
+# Pint - Code Linter
+# ============================================================
+
+pint:
+  stage: lint
+  image: ghcr.io/shivammathur/php-extensions/php:8.4
+  script:
+    - composer install --no-interaction --prefer-dist
+    - ./vendor/bin/pint --test -v
+  allow_failure: true
+  only:
+    - master
+    - develop
+    - merge_requests
+  tags:
+    - docker
