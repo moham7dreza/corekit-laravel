@@ -5,7 +5,7 @@
 
 pest:
   stage: test
-  image: ghcr.io/shivammathur/php-extensions/php:8.4-mysql
+  image: crazywhalecc/docker-php-laravel:8.4
   services:
     - name: mysql:8.0
       alias: mysql
