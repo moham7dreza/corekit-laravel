@@ -1,0 +1,99 @@
+# ============================================================
+# Deploy
+# ============================================================
+
+deploy-staging:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  variables:
+    K8S_NAMESPACE: staging
+  script:
+    # connect to cluster
+    - kubectl config set-cluster k8s --server=$K8S_SERVER --certificate-authority=$K8S_CA_CERT
+    - kubectl config set-credentials deployer --token=$K8S_TOKEN
+    - kubectl config set-context staging --cluster=k8s --user=deployer --namespace=$K8S_NAMESPACE
+    - kubectl config use-context staging
+
+    # update ConfigMap and Secret
+    - kubectl apply -f .k8s/config.yml
+    - kubectl apply -f .k8s/secret.yml
+    - kubectl apply -f .k8s/storage.yml
+
+    # deploy MySQL
+    - kubectl apply -f .k8s/mysql/deployment.yml
+    - kubectl apply -f .k8s/mysql/service.yml
+
+    # wait for MySQL
+    - kubectl rollout status deployment/mysql -n $K8S_NAMESPACE
+
+    # deploy Redis
+    - kubectl apply -f .k8s/redis/deployment.yml
+    - kubectl apply -f .k8s/redis/service.yml
+
+    # deploy Laravel
+    - kubectl set image deployment/laravel-app php-fpm=$CI_REGISTRY_IMAGE:nightly -n $K8S_NAMESPACE
+    - kubectl apply -f .k8s/app/deployment.yml
+    - kubectl rollout status deployment/laravel-app -n $K8S_NAMESPACE
+
+    # deploy Nginx
+    - kubectl apply -f .k8s/nginx/deployment.yml
+    - kubectl apply -f .k8s/nginx/service.yml
+    - kubectl apply -f .k8s/ingress.yml
+
+    - echo "Deploy to staging completed!"
+  environment:
+    name: staging
+    url: https://staging.corekit.com
+  only:
+    - develop
+  when: manual
+  tags:
+    - docker
+
+deploy-production:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  variables:
+    K8S_NAMESPACE: production
+  script:
+    # connect to cluster
+    - kubectl config set-cluster k8s --server=$K8S_SERVER --certificate-authority=$K8S_CA_CERT
+    - kubectl config set-credentials deployer --token=$K8S_TOKEN
+    - kubectl config set-context production --cluster=k8s --user=deployer --namespace=$K8S_NAMESPACE
+    - kubectl config use-context production
+
+    # update ConfigMap and Secret
+    - kubectl apply -f .k8s/config.yml
+    - kubectl apply -f .k8s/secret.yml
+    - kubectl apply -f .k8s/storage.yml
+
+    # deploy MySQL
+    - kubectl apply -f .k8s/mysql/deployment.yml
+    - kubectl apply -f .k8s/mysql/service.yml
+
+    # wait for MySQL
+    - kubectl rollout status deployment/mysql -n $K8S_NAMESPACE
+
+    # deploy Redis
+    - kubectl apply -f .k8s/redis/deployment.yml
+    - kubectl apply -f .k8s/redis/service.yml
+
+    # deploy Laravel
+    - kubectl set image deployment/laravel-app php-fpm=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA -n $K8S_NAMESPACE
+    - kubectl apply -f .k8s/app/deployment.yml
+    - kubectl rollout status deployment/laravel-app -n $K8S_NAMESPACE
+
+    # deploy Nginx
+    - kubectl apply -f .k8s/nginx/deployment.yml
+    - kubectl apply -f .k8s/nginx/service.yml
+    - kubectl apply -f .k8s/ingress.yml
+
+    - echo "Deploy to production completed!"
+  environment:
+    name: production
+    url: https://corekit.com
+  only:
+    - master
+  when: manual
+  tags:
+    - docker

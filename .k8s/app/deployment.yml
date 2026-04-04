@@ -1,0 +1,84 @@
+# ============================================================
+# Laravel Application Deployment
+# ============================================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-app
+  namespace: production
+  labels:
+    app: laravel
+    tier: backend
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: laravel
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: laravel
+        tier: backend
+    spec:
+      containers:
+        - name: php-fpm
+          image: $CI_REGISTRY_IMAGE:latest
+          ports:
+            - containerPort: 9000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: laravel-config
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: laravel-secret
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: laravel-secret
+                  key: DB_PASSWORD
+            - name: APP_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: laravel-secret
+                  key: APP_KEY
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 9000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 9000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          volumeMounts:
+            - name: storage
+              mountPath: /var/www/storage
+            - name: storage-app
+              mountPath: /var/www/bootstrap/cache
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: laravel-storage
+        - name: storage-app
+          emptyDir: {}

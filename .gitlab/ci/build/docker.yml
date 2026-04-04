@@ -1,4 +1,3 @@
-# .gitlab/ci/build/docker.yml
 # ============================================================
 # Docker Image Build
 # ============================================================
@@ -24,6 +23,11 @@ docker-build:
       .
     - docker push $IMAGE_TAG
     - docker push $IMAGE_TAG_LATEST
+    - |
+      if [ "$CI_COMMIT_BRANCH" = "develop" ]; then
+        docker tag $IMAGE_TAG $CI_REGISTRY_IMAGE:nightly
+        docker push $CI_REGISTRY_IMAGE:nightly
+      fi
   only:
     - master
     - develop

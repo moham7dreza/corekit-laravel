@@ -1,0 +1,63 @@
+# ============================================================
+# Nginx Deployment
+# ============================================================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: production
+  labels:
+    app: nginx
+    tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: frontend
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+              name: http
+            - containerPort: 443
+              name: https
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+            - name: public-files
+              mountPath: /var/www/public
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config
+        - name: public-files
+          persistentVolumeClaim:
+            claimName: laravel-storage

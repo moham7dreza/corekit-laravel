@@ -1,8 +1,7 @@
 # .gitlab-ci.yml
 # ============================================================
-# Laravel 12 + React + Pest + Pint + Rector
+# Laravel 12 + React + Pest + Pint + Rector + Kubernetes
 # PHP 8.4
-# Main Pipeline Configuration
 # ============================================================
 
 variables:
@@ -15,10 +14,14 @@ variables:
   SESSION_DRIVER: array
   QUEUE_CONNECTION: sync
 
+  # Kubernetes
+  K8S_NAMESPACE: production
+
 stages:
   - test
   - lint
   - build
+  - push
   - deploy
 
 cache:
@@ -39,5 +42,4 @@ include:
   - local: '.gitlab/ci/build/docker.yml'
   - local: '.gitlab/ci/build/assets.yml'
 
-  - local: '.gitlab/ci/deploy/staging.yml'
-  - local: '.gitlab/ci/deploy/production.yml'
+  - local: '.k8s/deploy.yml'
