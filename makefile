@@ -285,7 +285,7 @@ serve: ## Start basic servers
 		"${ENTRYPOINT} php artisan reverb:start --debug" \
 		"${ENTRYPOINT} php artisan serve --port=9000" \
 		"npm run dev" \
-		"${ENTRYPOINT} php artisan schedule:run-cronless" \
+		"${ENTRYPOINT} php artisan schedule:run" \
 		"${ENTRYPOINT} php artisan pulse:work" \
 		"${ENTRYPOINT} php artisan pail --timeout=86400" \
 		"${ENTRYPOINT} php artisan nightwatch:agent"
