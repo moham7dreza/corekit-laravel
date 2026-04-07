@@ -13,10 +13,15 @@
     ],
     "sail": false,
     "skills": [
+        "laravel-best-practices",
+        "configuring-horizon",
+        "pulse-development",
         "wayfinder-development",
         "pest-testing",
         "inertia-react-development",
+        "echo-react-development",
+        "echo-development",
         "tailwindcss-development",
-        "developing-with-fortify"
+        "fortify-development"
     ]
 }

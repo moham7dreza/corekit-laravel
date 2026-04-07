@@ -3,9 +3,8 @@
 namespace App\Providers\Filament;
 
 use AlizHarb\ActivityLog\ActivityLogPlugin;
-use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
-use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
+// use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
 use Awcodes\Overlook\OverlookPlugin;
 use Awcodes\Overlook\Widgets\OverlookWidget;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
@@ -45,8 +44,7 @@ use Novius\LaravelFilamentNews\Filament\NewsPlugin;
 use Novius\LaravelFilamentPageManager\Filament\PageManagerPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
-use SalmanAlmajali\JokesWidget\JokesWidget;
-use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
+// use SalmanAlmajali\JokesWidget\JokesWidget;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use Statikbe\FilamentTranslationManager\FilamentChainedTranslationManagerPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
@@ -89,8 +87,8 @@ class AdminPanelProvider extends PanelProvider
                 FilamentInfoWidget::class,
                 SystemInfoWidget::class,
                 OverlookWidget::class,
-                JokesWidget::class,
-                WeatherWidget::class,
+                // JokesWidget::class,
+                // WeatherWidget::class,
                 TicketStatsWidget::class,
             ])
             ->middleware([
@@ -109,13 +107,13 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationItems($this->getNavItems())
             ->plugins([
-                FilamentNordThemePlugin::make(),
+                // FilamentNordThemePlugin::make(),
                 FilamentBackgroundsPlugin::make(),
                 EnvironmentIndicatorPlugin::make()
                     ->showGitBranch()
                     ->showDebugModeWarning(),
                 FilamentSpatieLaravelHealthPlugin::make(),
-                FilamentSpatieLaravelBackupPlugin::make(),
+                // FilamentSpatieLaravelBackupPlugin::make(),
                 FilamentExceptionsPlugin::make()
                     ->navigationLabel('Error Logs')
                     ->navigationIcon('heroicon-o-bug-ant')
