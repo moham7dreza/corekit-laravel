@@ -1,0 +1,45 @@
+# .gitlab-ci.yml
+# ============================================================
+# Laravel 12 + React + Pest + Pint + Rector + Kubernetes
+# PHP 8.4
+# ============================================================
+
+variables:
+  DOCKER_DRIVER: overlay2
+  PHP_VERSION: "8.4"
+  NODE_VERSION: "20"
+  COMPOSER_CACHE_DIR: "$CI_PROJECT_DIR/.composer"
+  APP_ENV: testing
+  CACHE_DRIVER: array
+  SESSION_DRIVER: array
+  QUEUE_CONNECTION: sync
+
+  # Kubernetes
+  K8S_NAMESPACE: production
+
+stages:
+  - test
+  - lint
+  - build
+  - push
+  - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .composer/
+    - vendor/
+    - node_modules/
+    - .npm/
+    - .pint-cache/
+
+include:
+  - local: '.gitlab/ci/jobs/pest.yml'
+
+  - local: '.gitlab/ci/jobs/pint.yml'
+  - local: '.gitlab/ci/jobs/rector.yml'
+
+  - local: '.gitlab/ci/build/docker.yml'
+  - local: '.gitlab/ci/build/assets.yml'
+
+  - local: '.k8s/deploy.yml'

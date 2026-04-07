@@ -8,7 +8,6 @@
     "require": {
         "php": "^8.3",
         "alizharb/filament-activity-log": "^1.3",
-        "andreia/filament-nord-theme": "^3.0",
         "andreia/filament-ui-switcher": "^1.0",
         "arshaviras/weather-widget": "^1.2",
         "awcodes/overlook": "^4.0",
@@ -43,7 +42,6 @@
         "pxlrbt/filament-excel": "^3.6",
         "pxlrbt/filament-spotlight": "^2.1",
         "salmanalmajali/jokes-widget": "^1.0",
-        "shuvroroy/filament-spatie-laravel-backup": "^3.3",
         "shuvroroy/filament-spatie-laravel-health": "^3.2",
         "spatie/laravel-data": "^4.19",
         "spatie/laravel-permission": "^7.2",
@@ -145,5 +143,14 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://mirror2.chabokan.net/composer/"
+        },
+        {
+            "packagist.org": false
+        }
+    ]
 }

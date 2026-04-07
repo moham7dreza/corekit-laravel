@@ -12,4 +12,5 @@ Route::get('dashboard', fn () => Inertia::render('dashboard'))->middleware(['aut
 
 require __DIR__.'/settings.php';
 
-\Novius\LaravelFilamentPageManager\Facades\PageManager::routes();
+// TODO: why main page get not found
+// \Novius\LaravelFilamentPageManager\Facades\PageManager::routes();

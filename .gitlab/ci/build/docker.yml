@@ -1,0 +1,35 @@
+# ============================================================
+# Docker Image Build
+# ============================================================
+
+docker-build:
+  stage: build
+  image: docker:24
+  services:
+    - docker:24-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    IMAGE_TAG_LATEST: $CI_REGISTRY_IMAGE:latest
+    DOCKER_BUILD_CONTEXT: .
+    DOCKER_FILE: Dockerfile
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build
+      --cache-from $IMAGE_TAG_LATEST
+      -t $IMAGE_TAG
+      -t $IMAGE_TAG_LATEST
+      --build-arg PHP_VERSION=$PHP_VERSION
+      .
+    - docker push $IMAGE_TAG
+    - docker push $IMAGE_TAG_LATEST
+    - |
+      if [ "$CI_COMMIT_BRANCH" = "develop" ]; then
+        docker tag $IMAGE_TAG $CI_REGISTRY_IMAGE:nightly
+        docker push $CI_REGISTRY_IMAGE:nightly
+      fi
+  only:
+    - master
+    - develop
+  tags:
+    - docker

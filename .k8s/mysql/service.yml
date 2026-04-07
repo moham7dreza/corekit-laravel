@@ -1,0 +1,16 @@
+# ============================================================
+# MySQL Service
+# ============================================================
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: production
+spec:
+  selector:
+    app: mysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+  clusterIP: None

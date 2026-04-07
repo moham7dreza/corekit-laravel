@@ -1,0 +1,17 @@
+# ============================================================
+# Rector - Code Optimization
+# ============================================================
+
+rector:
+  stage: lint
+  image: ghcr.io/shivammathur/php-extensions/php:8.4
+  script:
+    - composer install --no-interaction --prefer-dist
+    - ./vendor/bin/rector process --dry-run
+  allow_failure: true
+  only:
+    - master
+    - develop
+    - merge_requests
+  tags:
+    - docker

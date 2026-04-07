@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: laravel-config
+  namespace: production
+data:
+  APP_ENV: "production"
+  APP_DEBUG: "false"
+  LOG_CHANNEL: "stack"
+  DB_HOST: "mysql-service"
+  DB_PORT: "3306"
+  DB_DATABASE: "laravel"
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  CACHE_DRIVER: "redis"
+  QUEUE_CONNECTION: "redis"
