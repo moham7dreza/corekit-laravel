@@ -27,6 +27,7 @@
         "laravel/octane": "*",
         "laravel/pulse": "^1.5",
         "laravel/reverb": "^1.7",
+        "laravel/sanctum": "^4.0",
         "laravel/telescope": "^5.17",
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.9",
