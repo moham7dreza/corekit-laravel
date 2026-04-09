@@ -283,9 +283,9 @@ serve: ## Start basic servers
 		"${ENTRYPOINT} php artisan queue:listen" \
 		"${ENTRYPOINT} php artisan horizon" \
 		"${ENTRYPOINT} php artisan reverb:start --debug" \
-		"${ENTRYPOINT} php artisan serve --port=9000" \
-		"npm run dev" \
-		"${ENTRYPOINT} php artisan schedule:run" \
+		"${ENTRYPOINT} php artisan serve --port=4000" \
+		"npm run build" \
+		"${ENTRYPOINT} php artisan schedule:work" \
 		"${ENTRYPOINT} php artisan pulse:work" \
 		"${ENTRYPOINT} php artisan pail --timeout=86400" \
 		"${ENTRYPOINT} php artisan nightwatch:agent"
