@@ -19,4 +19,13 @@ final class LoginOtpRequest extends FormRequest
             'mobile' => ['required', 'numeric', 'digits:11', 'regex:/^09[0-9]{9}$/'],
         ];
     }
+
+    public function messages(): array
+    {
+        // TODO: translate
+        return [
+            'mobile.required' => 'شماره موبایل الزامی است',
+            'mobile.regex' => 'فرمت شماره موبایل صحیح نیست',
+        ];
+    }
 }

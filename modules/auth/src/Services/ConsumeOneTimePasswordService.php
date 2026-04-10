@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 use Modules\Auth\Enums\NoticeType;
 use Modules\Auth\Models\Otp;
 use Random\RandomException;
-use Throwable;
 
 final readonly class ConsumeOneTimePasswordService
 {
@@ -22,23 +21,30 @@ final readonly class ConsumeOneTimePasswordService
 
     /**
      * @throws RandomException
-     * @throws Throwable
      */
-    public function prepareAndSend($mobile): array
+    public function prepareAndSend(string $mobile): array
     {
-        $user = User::query()->firstWhere('mobile', $mobile);
+        $lastOtp = Otp::query()
+            ->where('login_id', $mobile)
+            ->where('used', 0)
+            ->orderByDesc('created_at')
+            ->first();
 
-        //        $metric = metric('auth:otp')
-        //            ->date(Date::today());
+        if ($lastOtp) {
+            $secondsSinceLastOtp = Date::now()->diffInSeconds($lastOtp->created_at);
+            $resendSeconds = config('sms.otp.resend_seconds', 60);
 
-        if ($user) {
-            //            $metric->measurable($user);
+            if ($secondsSinceLastOtp < $resendSeconds) {
+                $remainingTime = $resendSeconds - $secondsSinceLastOtp;
+                // TODO: translate
+                throw new \RuntimeException("لطفاً {$remainingTime} ثانیه صبر کنید");
+            }
         }
 
-        //        $metric->hourly()->record();
-
-        $otpCode = random_int(1000, 9999);
+        $otpCode = str_pad(random_int(0, 9999), 4, '0', STR_PAD_LEFT);
         $token = Str::random(60);
+
+        $user = User::query()->firstWhere('mobile', $mobile);
 
         Otp::query()->updateOrCreate(
             ['login_id' => $mobile, 'used' => 0],
