@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0787643bff3b0a4cb9e29702ca965bad",
+    "content-hash": "4f256dfdee9f58352825403fa8809892",
     "packages": [
         {
             "name": "alizharb/filament-activity-log",
@@ -2411,6 +2411,62 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.3"
             },
             "time": "2024-07-08T12:26:09+00:00"
+        },
+        {
+            "name": "directorytree/metrics",
+            "version": "v1.6.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://hub.megan.ir/repository/composer/directorytree/metrics/v1.6.1/directorytree-metrics-v1.6.1.zip",
+                "reference": "d784ca6c79512eb34332839b534838ea5f5dc1f3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/collections": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/database": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/redis": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0|^11.0",
+                "pestphp/pest": "^1.0|^2.0|^3.0|^4.0",
+                "pestphp/pest-plugin-laravel": "^1.0|^2.0|^3.0|^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Metrics": "DirectoryTree\\Metrics\\Facades\\Metrics"
+                    },
+                    "providers": [
+                        "DirectoryTree\\Metrics\\MetricServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "DirectoryTree\\Metrics\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Bauman",
+                    "email": "steven_bauman@outlook.com"
+                }
+            ],
+            "description": "Record metrics in your Laravel application",
+            "support": {
+                "issues": "https://github.com/DirectoryTree/Metrics/issues",
+                "source": "https://github.com/DirectoryTree/Metrics/tree/v1.6.1"
+            },
+            "time": "2026-03-18T18:17:08+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -20781,7 +20837,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.3"
+        "php": "^8.4"
     },
     "platform-dev": {},
     "plugin-api-version": "2.6.0"

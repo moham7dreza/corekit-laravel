@@ -62,6 +62,9 @@ final class VerifyUserWithOTPController extends Controller
 
         $user = User::query()->firstWhere('mobile', $request->mobile);
 
+        $metric = metric('auth:verify')
+            ->date(Date::today());
+
         if (! $user) {
             $user = User::query()->create([
                 'password' => Str::random(10),
@@ -72,9 +75,12 @@ final class VerifyUserWithOTPController extends Controller
         } else {
             $user->update(['mobile_verified_at' => Date::now()]);
             $message = 'با موفقیت وارد شدید';
+            $metric->measurable($user);
         }
 
         auth()->login($user);
+
+        $metric->hourly()->record();
 
         $token = $user->createToken('auth-token')->plainTextToken;
 

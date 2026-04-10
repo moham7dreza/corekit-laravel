@@ -46,6 +46,15 @@ final readonly class ConsumeOneTimePasswordService
 
         $user = User::query()->firstWhere('mobile', $mobile);
 
+        $metric = metric('auth:otp')
+            ->date(Date::today());
+
+        if ($user) {
+            $metric->measurable($user);
+        }
+
+        $metric->hourly()->record();
+
         Otp::query()->updateOrCreate(
             ['login_id' => $mobile, 'used' => 0],
             [
