@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f256dfdee9f58352825403fa8809892",
+    "content-hash": "066f20a1d4540c3706f692b924345d9f",
     "packages": [
         {
             "name": "alizharb/filament-activity-log",
@@ -16788,6 +16788,59 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "amyavari/persian-faker-php",
+            "version": "v1.4.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://hub.megan.ir/repository/composer/amyavari/persian-faker-php/v1.4.0/amyavari-persian-faker-php-v1.4.0.zip",
+                "reference": "4eeeae65c67bad7ef257f0bca5f2d1e9de246df7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.2.0"
+            },
+            "require-dev": {
+                "dg/bypass-finals": "^1.9",
+                "laravel/pint": "^1.18.1",
+                "mockery/mockery": "^1.6",
+                "nunomaduro/mock-final-classes": "^1.2",
+                "phpstan/phpstan": "^1.12.7",
+                "phpunit/phpunit": "^11.5",
+                "rector/rector": "^1.2.8",
+                "symfony/var-dumper": "^7.1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "./src/helpers.php"
+                ],
+                "psr-4": {
+                    "AliYavari\\PersianFaker\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ali Mohammad Yavari",
+                    "email": "ali.m.yavari70@gmail.com"
+                }
+            ],
+            "description": "This is an extension for fakerphp/faker to support Persian language",
+            "keywords": [
+                "dev",
+                "faker",
+                "persian",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/amyavari/persian-faker-php/issues",
+                "source": "https://github.com/amyavari/persian-faker-php/tree/v1.4.0"
+            },
+            "time": "2026-02-19T08:38:22+00:00"
+        },
         {
             "name": "barryvdh/laravel-ide-helper",
             "version": "v3.7.0",

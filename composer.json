@@ -59,6 +59,7 @@
         "tapp/filament-maillog": "^2.0"
     },
     "require-dev": {
+        "amyavari/persian-faker-php": "^1.4",
         "barryvdh/laravel-ide-helper": "^3.6",
         "driftingly/rector-laravel": "^2.1",
         "fakerphp/faker": "^1.23",

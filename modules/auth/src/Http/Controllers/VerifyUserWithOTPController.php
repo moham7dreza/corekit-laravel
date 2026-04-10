@@ -42,7 +42,7 @@ final class VerifyUserWithOTPController extends Controller
         }
 
         $expiryMinutes = config('sms.otp.expiry_minutes', 5);
-        if (Carbon::now()->diffInMinutes($otp->created_at) > $expiryMinutes) {
+        if (Date::now()->diffInMinutes($otp->created_at) > $expiryMinutes) {
             return ApiJsonResponse::error(
                 Response::HTTP_UNPROCESSABLE_ENTITY,
                 'زمان مجاز این کد به پایان رسید'
@@ -67,9 +67,11 @@ final class VerifyUserWithOTPController extends Controller
 
         if (! $user) {
             $user = User::query()->create([
+                'name' => $request->mobile,
                 'password' => Str::random(10),
                 'mobile' => $request->mobile,
                 'mobile_verified_at' => Date::now(),
+                'email' => $request->mobile.'@local.dev',
             ]);
             $message = 'ثبت نام با موفقیت انجام شد';
         } else {

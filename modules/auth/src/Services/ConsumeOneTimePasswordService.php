@@ -41,7 +41,7 @@ final readonly class ConsumeOneTimePasswordService
             }
         }
 
-        $otpCode = str_pad(random_int(0, 9999), 4, '0', STR_PAD_LEFT);
+        $otpCode = str_pad((string) random_int(0, 9999), 4, '0', STR_PAD_LEFT);
         $token = Str::random(60);
 
         $user = User::query()->firstWhere('mobile', $mobile);
