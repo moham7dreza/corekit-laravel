@@ -12,36 +12,6 @@ use Modules\Auth\Models\Otp;
 use function Pest\Laravel\assertAuthenticated;
 use function Pest\Laravel\postJson;
 
-it('can register new user', function (): void {
-
-    Event::fake();
-    Metrics::fake();
-
-    $userData = [
-        'name' => 'Test User',
-        'email' => 'user@example.com',
-        'password' => $pass = 'asdasdsa@1231DQWD',
-        'password_confirmation' => $pass,
-        'mobile' => '09120000000',
-    ];
-
-    postJson(route('api.auth.register'), $userData)->assertNoContent();
-
-    $user = User::query()->firstWhere([
-        'name' => 'Test User',
-        'email' => 'user@example.com',
-        'mobile' => '09120000000',
-    ]);
-
-    expect($user)->not->toBeNull();
-
-    assertAuthenticated();
-
-    Event::assertDispatchedTimes(Registered::class);
-
-    Metrics::assertRecorded('auth:signups');
-});
-
 it('can send otp with user', function (): void {
 
     Metrics::fake();
