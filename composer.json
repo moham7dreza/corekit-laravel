@@ -9,7 +9,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "alizharb/filament-activity-log": "^1.3",
         "andreia/filament-ui-switcher": "^1.0",
         "arshaviras/weather-widget": "^1.2",
