@@ -50,7 +50,7 @@
         "pxlrbt/filament-spotlight": "^2.1",
         "salmanalmajali/jokes-widget": "^1.0",
         "shuvroroy/filament-spatie-laravel-health": "^3.2",
-        "spatie/laravel-data": "^4.19",
+        "spatie/laravel-data": "^4.21",
         "spatie/laravel-permission": "^7.2",
         "statikbe/laravel-filament-chained-translation-manager": "^4.2",
         "stechstudio/filament-impersonate": "^5.0",
@@ -80,7 +80,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Support/Helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

@@ -1,10 +1,12 @@
 {
 	"name": "modules/auth",
-	"description": "",
+	"description": "authentication module",
 	"type": "library",
 	"version": "1.0",
 	"license": "proprietary",
-	"require": {},
+	"require": {
+        "directorytree/metrics": "^1.6"
+    },
 	"autoload": {
 		"psr-4": {
 			"Modules\\Auth\\": "src/",
