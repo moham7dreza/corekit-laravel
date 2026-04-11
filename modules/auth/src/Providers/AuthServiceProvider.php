@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Auth\Providers;
 
+use App\Support\Traits\LoadModuleTranslations;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -14,6 +15,8 @@ use Override;
 
 final class AuthServiceProvider extends ServiceProvider
 {
+    use LoadModuleTranslations;
+
     #[Override]
     public function register(): void
     {
@@ -23,6 +26,8 @@ final class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureRateLimiter();
+        $this->loadTranslations();
+
     }
 
     private function setupSeeders(): void
@@ -36,5 +41,10 @@ final class AuthServiceProvider extends ServiceProvider
             Limit::perMinutes(2, 5)
                 ->by($request->input('mobile') ?: $request->ip()),
         ]);
+    }
+
+    protected function loadTranslations(): void
+    {
+        $this->loadModuleTranslations('auth');
     }
 }
