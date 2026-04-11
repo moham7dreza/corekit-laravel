@@ -39,7 +39,7 @@ final readonly class VerifyOtpService
             throw OtpException::expired();
         }
 
-        if ($otp->otp_code !== $data->otpCode) {
+        if ($otp->otp_code !== $data->otp) {
             $otp->increment('attempts');
             throw OtpException::invalid();
         }
