@@ -36,8 +36,9 @@ final readonly class ConsumeOneTimePasswordService
 
             if ($secondsSinceLastOtp < $resendSeconds) {
                 $remainingTime = $resendSeconds - $secondsSinceLastOtp;
-                // TODO: translate
-                throw new \RuntimeException("لطفاً {$remainingTime} ثانیه صبر کنید");
+                throw new \RuntimeException(
+                    __('auth.otp.wait', ['seconds' => $remainingTime])
+                );
             }
         }
 

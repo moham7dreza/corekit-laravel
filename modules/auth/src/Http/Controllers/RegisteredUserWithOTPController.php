@@ -27,12 +27,19 @@ final class RegisteredUserWithOTPController extends Controller
 
         return new Timebox()->call(
             callback: function () use ($request, $service) {
+                try {
+                    $data = $service->prepareAndSend($request->mobile);
 
-                $data = $service->prepareAndSend($request->mobile);
-
-                // TODO: translate
-                return ApiJsonResponse::success($data, message: 'کد تایید با موفقیت ارسال شد');
-
+                    return ApiJsonResponse::success(
+                        $data,
+                        message: __('auth.otp.sent')
+                    );
+                } catch (\RuntimeException $e) {
+                    return ApiJsonResponse::error(
+                        429,
+                        $e->getMessage()
+                    );
+                }
             },
             microseconds: CarbonInterval::microseconds(200)->microseconds
         );

@@ -22,10 +22,10 @@ final class LoginOtpRequest extends FormRequest
 
     public function messages(): array
     {
-        // TODO: translate
         return [
-            'mobile.required' => 'شماره موبایل الزامی است',
-            'mobile.regex' => 'فرمت شماره موبایل صحیح نیست',
+            'mobile.required' => __('auth.validation.mobile_required'),
+            'mobile.digits' => __('auth.validation.mobile_digits'),
+            'mobile.regex' => __('auth.validation.mobile_regex'),
         ];
     }
 }

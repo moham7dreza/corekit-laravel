@@ -25,7 +25,9 @@ final class VerifyOtpRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'otp.digits' => 'کد تایید باید ۴ رقم باشد',
+            'otp.required' => __('auth.validation.otp_required'),
+            'otp.digits' => __('auth.validation.otp_digits'),
+            'token.required' => __('auth.validation.token_required'),
         ];
     }
 }

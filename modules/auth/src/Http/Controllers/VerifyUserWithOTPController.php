@@ -29,7 +29,7 @@ final class VerifyUserWithOTPController extends Controller
         if (! $otp) {
             return ApiJsonResponse::error(
                 Response::HTTP_UNPROCESSABLE_ENTITY,
-                'کد تایید یافت نشد'
+                __('auth.otp.not_found')
             );
         }
 
@@ -37,7 +37,7 @@ final class VerifyUserWithOTPController extends Controller
         if ($otp->attempts >= $maxAttempts) {
             return ApiJsonResponse::error(
                 Response::HTTP_TOO_MANY_REQUESTS,
-                'تعداد دفعات مجاز این کد به پایان رسید'
+                __('auth.otp.max_attempts')
             );
         }
 
@@ -45,7 +45,7 @@ final class VerifyUserWithOTPController extends Controller
         if (Date::now()->diffInMinutes($otp->created_at) > $expiryMinutes) {
             return ApiJsonResponse::error(
                 Response::HTTP_UNPROCESSABLE_ENTITY,
-                'زمان مجاز این کد به پایان رسید'
+                __('auth.otp.expired')
             );
         }
 
@@ -54,7 +54,7 @@ final class VerifyUserWithOTPController extends Controller
 
             return ApiJsonResponse::error(
                 Response::HTTP_UNPROCESSABLE_ENTITY,
-                'کد وارد شده صحیح نمی‌باشد'
+                __('auth.otp.invalid')
             );
         }
 
@@ -73,10 +73,10 @@ final class VerifyUserWithOTPController extends Controller
                 'mobile_verified_at' => Date::now(),
                 'email' => $request->mobile.'@local.dev',
             ]);
-            $message = 'ثبت نام با موفقیت انجام شد';
+            $message = __('auth.otp.registered');
         } else {
             $user->update(['mobile_verified_at' => Date::now()]);
-            $message = 'با موفقیت وارد شدید';
+            $message = __('auth.otp.verified');
             $metric->measurable($user);
         }
 
