@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Widgets;
+namespace Modules\Filament\Widgets;
 
 use Cmsmaxinc\FilamentSystemVersions\Filament\Widgets\DependencyStat;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
