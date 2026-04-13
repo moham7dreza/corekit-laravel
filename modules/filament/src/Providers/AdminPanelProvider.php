@@ -14,6 +14,7 @@ use Cmsmaxinc\FilamentSystemVersions\FilamentSystemVersionsPlugin;
 use CraftForge\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin;
 use daacreators\CreatorsTicketing\Filament\Widgets\TicketStatsWidget;
 use daacreators\CreatorsTicketing\TicketingPlugin;
+use Filament\FontProviders\LocalFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -62,6 +63,11 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->font(
+                'Vazirmatn',
+                url: 'https://lib.arvancloud.ir/vazir-font/33.003/Farsi-Digits-Non-Latin/Vazirmatn-FD-NL-font-face.css',
+                provider: LocalFontProvider::class,
+            )
             ->spa(hasPrefetching: true)
             ->brandName('Corekit Laravel')
             ->default()
