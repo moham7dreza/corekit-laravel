@@ -17,7 +17,6 @@
 	"extra": {
 		"laravel": {
 			"providers": [
-                "Modules\\Filament\\Providers\\FilamentServiceProvider",
                 "Modules\\Filament\\Providers\\AdminPanelProvider",
 				"Modules\\Filament\\Providers\\UserPanelProvider"
 			]

@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Providers\Filament;
+namespace Modules\Filament\Providers;
 
 use AlizHarb\ActivityLog\ActivityLogPlugin;
 use Andreia\FilamentUiSwitcher\FilamentUiSwitcherPlugin;
-// use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
 use Awcodes\Overlook\OverlookPlugin;
 use Awcodes\Overlook\Widgets\OverlookWidget;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
@@ -44,12 +43,14 @@ use Novius\LaravelFilamentNews\Filament\NewsPlugin;
 use Novius\LaravelFilamentPageManager\Filament\PageManagerPlugin;
 use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 use pxlrbt\FilamentSpotlight\SpotlightPlugin;
-// use SalmanAlmajali\JokesWidget\JokesWidget;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 use Statikbe\FilamentTranslationManager\FilamentChainedTranslationManagerPlugin;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 use Tapp\FilamentAuthenticationLog\FilamentAuthenticationLogPlugin;
 use Tapp\FilamentMailLog\FilamentMailLogPlugin;
+
+// use Arshaviras\WeatherWidget\Widgets\WeatherWidget;
+// use SalmanAlmajali\JokesWidget\JokesWidget;
 
 class AdminPanelProvider extends PanelProvider
 {
