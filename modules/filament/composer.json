@@ -1,0 +1,26 @@
+{
+	"name": "modules/filament",
+	"description": "",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"Modules\\Filament\\": "src/",
+			"Modules\\Filament\\Tests\\": "tests/",
+			"Modules\\Filament\\Database\\Factories\\": "database/factories/",
+			"Modules\\Filament\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+                "Modules\\Filament\\Providers\\FilamentServiceProvider",
+                "Modules\\Filament\\Providers\\AdminPanelProvider",
+				"Modules\\Filament\\Providers\\UserPanelProvider"
+			]
+		}
+	}
+}
