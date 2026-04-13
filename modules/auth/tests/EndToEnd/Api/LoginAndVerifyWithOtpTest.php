@@ -1,0 +1,122 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Models\User;
+use DirectoryTree\Metrics\Facades\Metrics;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Event;
+use Modules\Auth\Enums\NoticeType;
+use Modules\Auth\Models\Otp;
+
+use function Pest\Laravel\assertAuthenticated;
+use function Pest\Laravel\postJson;
+
+it('can send otp with user', function (): void {
+
+    Metrics::fake();
+
+    $user = User::factory()->create();
+
+    $response = postJson(route('api.auth.send-otp'), [
+        'mobile' => $user->mobile,
+    ])
+        ->assertOk();
+
+    $otp = Otp::query()->firstWhere([
+        'login_id' => $user->mobile,
+        'type' => NoticeType::Sms,
+        'attempts' => 0,
+        'user_id' => $user->id,
+    ]);
+
+    expect($otp)->not->toBeNull()
+        ->and($otp?->token)->toBe($response->json('data.token'));
+
+    Metrics::assertRecorded('auth:otp');
+});
+
+it('can send otp without user', function (): void {
+
+    $response = postJson(route('api.auth.send-otp'), [
+        'mobile' => $mobile = '09120000001',
+    ])
+        ->assertOk();
+
+    $otp = Otp::query()->firstWhere([
+        'login_id' => $mobile,
+        'type' => NoticeType::Sms,
+        'attempts' => 0,
+        'user_id' => null,
+    ]);
+
+    expect($otp)->not->toBeNull()
+        ->and($otp?->token)->toBe($response->json('data.token'));
+});
+
+it('can verify otp without user', function (): void {
+
+    Event::fake();
+    Metrics::fake();
+
+    $mobile = '09120000002';
+    $otpCode = '1234';
+    $token = 'testtoken';
+
+    Otp::factory()->create([
+        'login_id' => $mobile,
+        'otp_code' => $otpCode,
+        'token' => $token,
+        'used' => false,
+        'type' => NoticeType::Sms,
+    ]);
+
+    postJson(route('api.auth.verify-otp'), [
+        'mobile' => $mobile,
+        'otp' => $otpCode,
+        'token' => $token,
+    ])
+        ->assertOk();
+
+    $user = User::query()->firstWhere([
+        'mobile' => $mobile,
+    ]);
+
+    expect($user)->not->toBeNull();
+
+    assertAuthenticated();
+
+    // Event::assertDispatchedTimes(Registered::class);
+
+    Metrics::assertRecorded('auth:verify');
+});
+
+it('can verify otp with user', function (): void {
+
+    Event::fake();
+
+    $user = User::factory()->create();
+
+    $mobile = $user->mobile;
+    $otpCode = '1234';
+    $token = 'testtoken';
+
+    Otp::factory()->create([
+        'login_id' => $mobile,
+        'otp_code' => $otpCode,
+        'token' => $token,
+        'used' => false,
+        'type' => NoticeType::Sms,
+    ]);
+
+    postJson(route('api.auth.verify-otp'), [
+        'mobile' => $mobile,
+        'otp' => $otpCode,
+        'token' => $token,
+    ])
+        ->assertOk();
+
+    assertAuthenticated();
+
+    // Event::assertDispatchedTimes(Registered::class);
+});

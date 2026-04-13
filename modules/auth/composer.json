@@ -1,0 +1,26 @@
+{
+	"name": "modules/auth",
+	"description": "authentication module",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {
+        "directorytree/metrics": "^1.6"
+    },
+	"autoload": {
+		"psr-4": {
+			"Modules\\Auth\\": "src/",
+			"Modules\\Auth\\Tests\\": "tests/",
+			"Modules\\Auth\\Database\\Factories\\": "database/factories/",
+			"Modules\\Auth\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Modules\\Auth\\Providers\\AuthServiceProvider"
+			]
+		}
+	}
+}

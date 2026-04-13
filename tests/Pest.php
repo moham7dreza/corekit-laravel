@@ -25,7 +25,12 @@ pest()->extend(TestCase::class)
     ->beforeEach(function (): void {
         Http::preventStrayRequests();
     })
-    ->in('Feature', 'EndToEnd');
+    ->in(
+        'Feature',
+        'EndToEnd',
+        '../modules/*/tests/Feature',
+        '../modules/*/tests/EndToEnd'
+    );
 
 /*
 |--------------------------------------------------------------------------

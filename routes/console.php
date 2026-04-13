@@ -8,3 +8,5 @@ Schedule::command('telescope:prune')->daily();
 Schedule::command('horizon:snapshot')->everyFiveMinutes();
 
 Schedule::command(CheckDependencyVersions::class)->daily();
+
+Schedule::command('sanctum:prune-expired --hours=24')->daily();

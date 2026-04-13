@@ -23,10 +23,5 @@ export default defineConfig({
     ],
     esbuild: {
         jsx: 'automatic',
-    },
-    server: {
-        watch: {
-            ignored: ['**/vendor/**', '**/node_modules/**']
-        }
     }
 });
