@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Users\Pages;
+namespace Modules\Filament\Resources\Pages;
 
-use App\Filament\Resources\Users\UserResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
+use Modules\Filament\Resources\UserResource;
 use Override;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
 

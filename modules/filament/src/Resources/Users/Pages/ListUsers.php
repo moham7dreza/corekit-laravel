@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Users\Pages;
+namespace Modules\Filament\Resources\Pages;
 
-use App\Filament\Resources\Users\UserResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
+use Modules\Filament\Resources\UserResource;
 use Override;
 
 class ListUsers extends ListRecords

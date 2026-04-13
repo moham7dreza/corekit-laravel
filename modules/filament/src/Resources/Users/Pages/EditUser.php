@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Resources\Users\Pages;
+namespace Modules\Filament\Resources\Pages;
 
-use App\Filament\Resources\Users\UserResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
+use Modules\Filament\Resources\UserResource;
 use Override;
 use STS\FilamentImpersonate\Actions\Impersonate;
 
