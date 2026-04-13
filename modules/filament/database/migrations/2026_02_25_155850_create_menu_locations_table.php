@@ -10,7 +10,7 @@ return new class extends Migration
     {
         $prefix = config('filament-menu-manager.table_prefix', 'fmm_');
 
-        Schema::create($prefix . 'menu_locations', function (Blueprint $table) {
+        Schema::create($prefix.'menu_locations', function (Blueprint $table) {
             $table->id();
             $table->string('handle')->unique();
             $table->string('name');
@@ -21,6 +21,6 @@ return new class extends Migration
     public function down(): void
     {
         $prefix = config('filament-menu-manager.table_prefix', 'fmm_');
-        Schema::dropIfExists($prefix . 'menu_locations');
+        Schema::dropIfExists($prefix.'menu_locations');
     }
 };

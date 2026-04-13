@@ -10,15 +10,15 @@ return new class extends Migration
     {
         $prefix = config('filament-menu-manager.table_prefix', 'fmm_');
 
-        Schema::create($prefix . 'menu_items', function (Blueprint $table) use ($prefix) {
+        Schema::create($prefix.'menu_items', function (Blueprint $table) use ($prefix) {
             $table->id();
             $table->foreignId('menu_id')
-                  ->constrained($prefix . 'menus')
-                  ->cascadeOnDelete();
+                ->constrained($prefix.'menus')
+                ->cascadeOnDelete();
             $table->foreignId('parent_id')
-                  ->nullable()
-                  ->constrained($prefix . 'menu_items')
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained($prefix.'menu_items')
+                ->nullOnDelete();
             $table->string('title');
             $table->string('url')->nullable();
             $table->string('target')->default('_self');
@@ -37,6 +37,6 @@ return new class extends Migration
     public function down(): void
     {
         $prefix = config('filament-menu-manager.table_prefix', 'fmm_');
-        Schema::dropIfExists($prefix . 'menu_items');
+        Schema::dropIfExists($prefix.'menu_items');
     }
 };
