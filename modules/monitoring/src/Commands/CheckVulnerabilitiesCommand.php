@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Monitoring\Commands;
 
-use App\Notifications\VulnerabilitiesFoundNotification;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use JsonException;
+use Modules\Monitoring\Notifications\VulnerabilitiesFoundNotification;
 
 final class CheckVulnerabilitiesCommand extends Command
 {

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Monitoring\Providers;
 
-use App\Events\PackageSent;
 use App\Jobs\Contracts\ShouldNotifyOnFailures;
 use App\Notifications\FailedJobNotification;
 use Exception;
@@ -24,7 +23,6 @@ final class JobLoggingServiceProvider extends ServiceProvider
 {
     private const array EXCLUDED_JOBS = [
         MongoLogJob::class,
-        PackageSent::class,
     ];
 
     private float $startTime;
